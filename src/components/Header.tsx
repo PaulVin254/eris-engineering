@@ -1,69 +1,76 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">E</span>
-            </div>
-            <span className="text-xl font-semibold text-foreground tracking-tight">Eris Engineering</span>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-xl">E</span>
           </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <a href="#home" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Home</a>
-            <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Process</a>
-            <a href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-            <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Testimonials</a>
-            <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Contact</a>
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="default" size="sm" className="text-sm font-medium px-6">
-              Get Started
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <span className="text-xl font-bold text-foreground">Eris Engineering</span>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg">
-            <nav className="flex flex-col p-6 space-y-4">
-              <a href="#home" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>Home</a>
-              <a href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>About</a>
-              <a href="#process" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>Process</a>
-              <a href="#projects" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>Projects</a>
-              <a href="#testimonials" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>Testimonials</a>
-              <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMenu}>Contact</a>
-              <Button variant="default" size="sm" className="mt-4 text-sm font-medium">
-                Get Started
-              </Button>
-            </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          <a href="#home" className="text-foreground hover:text-primary transition-colors">Home</a>
+          <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
+          <a href="#projects" className="text-foreground hover:text-primary transition-colors">Projects</a>
+          <a href="#process" className="text-foreground hover:text-primary transition-colors">Our Process</a>
+          <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
+        </nav>
+
+        {/* Contact Info & CTA */}
+        <div className="hidden lg:flex items-center space-x-4">
+          <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+            <Phone className="w-4 h-4" />
+            <span>+254 700 123 456</span>
           </div>
-        )}
+          <Button variant="default" size="sm">
+            Free Consultation
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? (
+            <X className="w-6 h-6 text-foreground" />
+          ) : (
+            <Menu className="w-6 h-6 text-foreground" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-background border-t border-border">
+          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
+            <a href="#home" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
+            <a href="#about" className="text-foreground hover:text-primary transition-colors py-2">About</a>
+            <a href="#projects" className="text-foreground hover:text-primary transition-colors py-2">Projects</a>
+            <a href="#process" className="text-foreground hover:text-primary transition-colors py-2">Our Process</a>
+            <a href="#contact" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
+            <div className="pt-4 border-t border-border">
+              <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-4">
+                <Phone className="w-4 h-4" />
+                <span>+254 700 123 456</span>
+              </div>
+              <Button variant="default" className="w-full">
+                Free Consultation
+              </Button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
