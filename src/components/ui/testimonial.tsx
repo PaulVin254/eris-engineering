@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 // Updated testimonials data for Eris Engineering with diaspora-focused content
 const testimonials = [
@@ -82,41 +82,50 @@ const AnimatedTestimonials = ({
       <div className="relative grid grid-cols-1 gap-y-12 md:grid-cols-2 md:gap-x-20">
         {/* Image Section */}
         <div className="flex items-center justify-center">
-            <div className="relative h-80 w-full max-w-xs">
-              <AnimatePresence>
-                {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={testimonial.src}
-                    // Animation properties reverted to the previous version.
-                    initial={{ opacity: 0, scale: 0.9, y: 50, rotate: randomRotate() }}
-                    animate={{
-                      opacity: isActive(index) ? 1 : 0.5,
-                      scale: isActive(index) ? 1 : 0.9,
-                      y: isActive(index) ? 0 : 20,
-                      zIndex: isActive(index) ? testimonials.length : testimonials.length - Math.abs(index - active),
-                      rotate: isActive(index) ? '0deg' : randomRotate(),
+          <div className="relative h-80 w-full max-w-xs">
+            <AnimatePresence>
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.src}
+                  // Animation properties reverted to the previous version.
+                  initial={{
+                    opacity: 0,
+                    scale: 0.9,
+                    y: 50,
+                    rotate: randomRotate(),
+                  }}
+                  animate={{
+                    opacity: isActive(index) ? 1 : 0.5,
+                    scale: isActive(index) ? 1 : 0.9,
+                    y: isActive(index) ? 0 : 20,
+                    zIndex: isActive(index)
+                      ? testimonials.length
+                      : testimonials.length - Math.abs(index - active),
+                    rotate: isActive(index) ? "0deg" : randomRotate(),
+                  }}
+                  exit={{ opacity: 0, scale: 0.9, y: -50 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0 origin-bottom"
+                  style={{ perspective: "1000px" }}
+                >
+                  <img
+                    src={testimonial.src}
+                    alt={testimonial.name}
+                    width={500}
+                    height={500}
+                    draggable={false}
+                    className="h-full w-full rounded-3xl object-cover shadow-2xl"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://placehold.co/500x500/e2e8f0/64748b?text=${testimonial.name.charAt(
+                        0
+                      )}`;
+                      e.currentTarget.onerror = null;
                     }}
-                    exit={{ opacity: 0, scale: 0.9, y: -50 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0 origin-bottom"
-                    style={{ perspective: '1000px' }}
-                  >
-                    <img
-                      src={testimonial.src}
-                      alt={testimonial.name}
-                      width={500}
-                      height={500}
-                      draggable={false}
-                      className="h-full w-full rounded-3xl object-cover shadow-2xl"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://placehold.co/500x500/e2e8f0/64748b?text=${testimonial.name.charAt(0)}`;
-                        e.currentTarget.onerror = null;
-                      }}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Text and Controls Section */}
@@ -131,17 +140,17 @@ const AnimatedTestimonials = ({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="flex flex-col justify-between"
             >
-                <div>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
-                        {testimonials[active].name}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
-                        {testimonials[active].designation}
-                    </p>
-                    <motion.p className="mt-8 text-lg text-slate-700 dark:text-slate-300">
-                        "{testimonials[active].quote}"
-                    </motion.p>
-                </div>
+              <div>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+                  {testimonials[active].name}
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {testimonials[active].designation}
+                </p>
+                <motion.p className="mt-8 text-lg text-slate-700 dark:text-slate-300">
+                  "{testimonials[active].quote}"
+                </motion.p>
+              </div>
             </motion.div>
           </AnimatePresence>
           <div className="flex gap-4 pt-12">
@@ -166,21 +175,19 @@ const AnimatedTestimonials = ({
   );
 };
 
-
 // --- Demo Component ---
 function AnimatedTestimonialsDemo() {
   return <AnimatedTestimonials testimonials={testimonials} />;
 }
-
 
 // --- Main App Component ---
 // This is the root of our application.
 export function Component() {
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-950">
-        {/* Animated grid background with 10% opacity */}
-        <style>
-            {`
+      {/* Animated grid background with 10% opacity */}
+      <style>
+        {`
                 @keyframes animate-grid {
                     0% { background-position: 0% 50%; }
                     100% { background-position: 100% 50%; }
@@ -201,13 +208,13 @@ export function Component() {
                         linear-gradient(to bottom, #1e293b 1px, transparent 1px);
                 }
             `}
-        </style>
-        <div className="animated-grid absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10" />
-        
-        {/* Content */}
-        <div className="z-10">
-            <AnimatedTestimonialsDemo />
-        </div>
+      </style>
+      <div className="animated-grid absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10" />
+
+      {/* Content */}
+      <div className="z-10">
+        <AnimatedTestimonialsDemo />
+      </div>
     </div>
   );
 }

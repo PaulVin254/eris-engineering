@@ -7,7 +7,7 @@ const TestimonialsSection21Dev = () => {
     <section className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -15,10 +15,12 @@ const TestimonialsSection21Dev = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            What Our <span className="text-orange-500">Diaspora Clients</span> Say
+            What Our <span className="text-orange-500">Diaspora Clients</span>{" "}
+            Say
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Real stories from Kenyans living abroad who trusted us to build their dream homes back home.
+            Real stories from Kenyans living abroad who trusted us to build
+            their dream homes back home.
           </p>
         </motion.div>
 
@@ -46,7 +48,8 @@ const TestimonialsSection21Dev = () => {
               Ready to Join Our Success Stories?
             </h3>
             <p className="text-lg text-muted-foreground mb-6">
-              Start your journey with a free consultation and see why diaspora Kenyans trust us with their dreams.
+              Start your journey with a free consultation and see why diaspora
+              Kenyans trust us with their dreams.
             </p>
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
               Get Your Free Consultation
