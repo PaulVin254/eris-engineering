@@ -67,11 +67,11 @@ export function HeroSection21Dev() {
               className="absolute inset-0 -z-20"
             >
               <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3276&q=80"
-                alt="background"
-                className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block w-full h-full object-cover"
-                width="3276"
-                height="4095"
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                alt="Beautiful residential homes background"
+                className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block w-full h-full object-cover opacity-30"
+                width="2340"
+                height="1560"
               />
             </AnimatedGroup>
             <div
@@ -182,17 +182,17 @@ export function HeroSection21Dev() {
                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
                   <img
                     className="bg-background aspect-[15/8] relative hidden rounded-2xl dark:block w-full h-full object-cover"
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2700&q=80"
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
+                    src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                    alt="Beautiful modern home construction in Kenya"
+                    width="2340"
+                    height="1560"
                   />
                   <img
                     className="z-2 border-border/25 aspect-[15/8] relative rounded-2xl border dark:hidden w-full h-full object-cover"
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2700&q=80"
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
+                    src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                    alt="Beautiful modern home construction in Kenya"
+                    width="2340"
+                    height="1560"
                   />
                 </div>
               </div>
