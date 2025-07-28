@@ -7,6 +7,14 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14% 4%;
