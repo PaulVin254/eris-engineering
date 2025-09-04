@@ -7,59 +7,51 @@ import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 const diasporaClients = [
   {
     id: 1,
-    name: "Sarah Wanjiku",
+    name: "Benedict Wanderi",
     designation: "Built in Kiambu • UK Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "benedict-wanderi.jpg",
   },
   {
     id: 2,
-    name: "David Mwangi",
+    name: "Benson Omwenga",
     designation: "Built in Kiambu • UK Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "benson-omwenga.jpg",
   },
   {
     id: 3,
-    name: "Grace Nyokabi",
+    name: "Lavina Cheptoo",
     designation: "Built in Machakos • UAE Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "lavina-cheptoo.jpg",
   },
   {
     id: 4,
-    name: "Peter Kamau",
+    name: "MaryAnn Jelagat",
     designation: "Built in Nakuru • Germany Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "maryann-jelagat.jpg",
   },
   {
     id: 5,
-    name: "Mary Njeri",
+    name: "Patricia Jeruto",
     designation: "Built in Thika • Australia Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "patricia-jeruto.jpg",
   },
   {
     id: 6,
-    name: "James Ochieng",
+    name: "Peter Mbitu",
     designation: "Built in Kisumu • USA Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
+    image: "peter-mbitu.jpg",
   },
   {
     id: 7,
-    name: "Ruth Wambui",
+    name: "Paul Wakoli",
     designation: "Built in Nyeri • Canada Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
+    image: "paul-wakoli.jpg",
   },
   {
     id: 8,
-    name: "Samuel Kiprotich",
+    name: "Brian Kibet",
     designation: "Built in Eldoret • Netherlands Diaspora",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "brian-kibet.jpg",
   },
 ];
 

@@ -7,37 +7,37 @@ const testimonials = [
   {
     quote:
       "I was so worried about building from Canada, but Eris Engineering made the process transparent and stress-free. Daily updates kept me informed every step of the way.",
-    name: "Sarah Wanjiku",
+    name: "Benedict Wanderi",
     designation: "Kenyan Living in Toronto, Canada",
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "benedict-wanderi.jpg",
   },
   {
     quote:
       "After being cheated by a local contractor, I was hesitant to try again. Eris Engineering restored my faith. My dream home in Kiambu is now complete!",
-    name: "David Mwangi",
+    name: "Benson Omwenga",
     designation: "Diaspora from United Kingdom",
-    src: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "benson-omwenga.jpg",
   },
   {
     quote:
       "The WhatsApp updates were amazing! I could see my house being built from Dubai. Every shilling was accounted for, no surprises or hidden costs.",
-    name: "Grace Nyokabi",
+    name: "Lavina Cheptoo",
     designation: "Healthcare Worker in Dubai, UAE",
-    src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "lavina-cheptoo.jpg",
   },
   {
     quote:
       "From the initial consultation to handover, everything was professional. I built my retirement home in Nakuru without stepping foot in Kenya until completion.",
-    name: "Peter Kamau",
+    name: "MaryAnn Jelagat",
     designation: "Engineer from Germany",
-    src: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "maryann-jelagat.jpg",
   },
   {
     quote:
       "The fixed-price contract gave me peace of mind. No budget overruns, no surprise expenses. My family home was delivered exactly as promised.",
-    name: "Mary Njeri",
+    name: "Patricia Jeruto",
     designation: "Nurse from Australia",
-    src: "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "patricia-jeruto.jpg",
   },
 ];
 
