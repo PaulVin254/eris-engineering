@@ -7,7 +7,7 @@ import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 const diasporaClients = [
   {
     id: 1,
-    name: "Benedict Wanderi",
+    name: "Benedict Wandera",
     designation: "Built in Kiambu • UK Diaspora",
     image: "benedict-wanderi.jpg",
   },

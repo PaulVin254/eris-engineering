@@ -7,7 +7,7 @@ const testimonials = [
   {
     quote:
       "I was so worried about building from Canada, but Eris Engineering made the process transparent and stress-free. Daily updates kept me informed every step of the way.",
-    name: "Benedict Wanderi",
+    name: "Benedict Wandera",
     designation: "Kenyan Living in Toronto, Canada",
     src: "benedict-wanderi.jpg",
   },
