@@ -21,9 +21,9 @@ const testimonials = [
   {
     quote:
       "The WhatsApp updates were amazing! I could see my house being built from Dubai. Every shilling was accounted for, no surprises or hidden costs.",
-    name: "Lavina Cheptoo",
+    name: "Mercy Jerop",
     designation: "Healthcare Worker in Dubai, UAE",
-    src: "lavina-cheptoo.jpg",
+    src: "mercy-jerop.jpg",
   },
   {
     quote:
