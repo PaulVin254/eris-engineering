@@ -327,7 +327,8 @@ function ErisFooter() {
         {/* Bottom Bar */}
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-center md:flex-row">
           <p className="text-sm text-white/60">
-            © 2024 Eris Engineering Ltd. All rights reserved.
+            © {new Date().getFullYear()} Eris Engineering Ltd. All rights
+            reserved.
           </p>
           <nav className="flex gap-4 text-sm">
             <a
