@@ -13,23 +13,50 @@ const Header = () => {
           <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-xl">E</span>
           </div>
-          <span className="text-xl font-bold text-foreground">Eris Engineering</span>
+          <span className="text-xl font-bold text-foreground">
+            Eris Engineering
+          </span>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="text-foreground hover:text-primary transition-colors">Home</a>
-          <a href="#about" className="text-foreground hover:text-primary transition-colors">About</a>
-          <a href="#projects" className="text-foreground hover:text-primary transition-colors">Projects</a>
-          <a href="#process" className="text-foreground hover:text-primary transition-colors">Our Process</a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">Contact</a>
+          <a
+            href="#home"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Home
+          </a>
+          <a
+            href="#about"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="#projects"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Projects
+          </a>
+          <a
+            href="#process"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Our Process
+          </a>
+          <a
+            href="#contact"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            Contact
+          </a>
         </nav>
 
         {/* Contact Info & CTA */}
         <div className="hidden lg:flex items-center space-x-4">
           <div className="flex items-center space-x-1 text-sm text-muted-foreground">
             <Phone className="w-4 h-4" />
-            <span>+254 700 123 456</span>
+            <span>+254 717 297 022</span>
           </div>
           <Button variant="default" size="sm">
             Free Consultation
@@ -54,15 +81,40 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-background border-t border-border">
           <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
-            <a href="#home" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
-            <a href="#about" className="text-foreground hover:text-primary transition-colors py-2">About</a>
-            <a href="#projects" className="text-foreground hover:text-primary transition-colors py-2">Projects</a>
-            <a href="#process" className="text-foreground hover:text-primary transition-colors py-2">Our Process</a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
+            <a
+              href="#home"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              About
+            </a>
+            <a
+              href="#projects"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Projects
+            </a>
+            <a
+              href="#process"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Our Process
+            </a>
+            <a
+              href="#contact"
+              className="text-foreground hover:text-primary transition-colors py-2"
+            >
+              Contact
+            </a>
             <div className="pt-4 border-t border-border">
               <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-4">
                 <Phone className="w-4 h-4" />
-                <span>+254 700 123 456</span>
+                <span>+254 717 297 022</span>
               </div>
               <Button variant="default" className="w-full">
                 Free Consultation

@@ -296,7 +296,7 @@ const HeroHeader = () => {
               </div>
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <span>+254 700 123 456</span>
+                  <span>+254 717 297 022</span>
                 </div>
                 <Button
                   size="sm"
