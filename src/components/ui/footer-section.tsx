@@ -246,14 +246,21 @@ function ErisFooter() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full bg-white/10 border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all"
+                    <a
+                      href="https://www.instagram.com/erisbuilders/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Follow us on Instagram"
                     >
-                      <Instagram className="h-4 w-4" />
-                      <span className="sr-only">Instagram</span>
-                    </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full bg-white/10 border-white/20 text-white hover:bg-white/20 hover:scale-105 transition-all"
+                      >
+                        <Instagram className="h-4 w-4" />
+                        <span className="sr-only">Instagram</span>
+                      </Button>
+                    </a>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
