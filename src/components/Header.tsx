@@ -9,14 +9,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-xl">E</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">
-            Eris Engineering
-          </span>
-        </div>
+        <a href="/" className="flex items-center space-x-2">
+          <img
+            src="/eris-engineering-logo-nav.svg"
+            alt="Eris Engineering"
+            className="h-10 w-auto"
+          />
+        </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">

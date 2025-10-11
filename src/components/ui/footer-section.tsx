@@ -53,12 +53,11 @@ function ErisFooter() {
           {/* Company Info & Newsletter */}
           <div className="relative lg:col-span-1">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">
-                  E
-                </span>
-              </div>
-              <span className="text-xl font-bold">Eris Engineering</span>
+              <img
+                src="/eris-engineering-logo.svg"
+                alt="Eris Engineering"
+                className="h-10 w-auto"
+              />
             </div>
 
             <p className="mb-6 text-white/80 leading-relaxed">
