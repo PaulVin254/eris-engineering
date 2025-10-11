@@ -252,11 +252,14 @@ const HeroHeader = () => {
                 className="flex items-center space-x-2"
               >
                 <img
-                  src="/eris-engineering-logo-nav.svg"
+                  src="/eris-engineering-logo.svg"
                   alt="Eris Engineering"
-                  className="h-12 w-auto"
+                  className={cn(
+                    "w-auto transition-all duration-300",
+                    isScrolled ? "h-12 sm:h-14" : "h-12 sm:h-14"
+                  )}
                 />
-              </a>{" "}
+              </a>
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState == true ? "Close Menu" : "Open Menu"}

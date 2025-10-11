@@ -13,7 +13,7 @@ const Header = () => {
           <img
             src="/eris-engineering-logo.svg"
             alt="Eris Engineering"
-            className="h-12 w-auto"
+            className="h-16 w-auto sm:h-20"
           />
         </a>{" "}
         {/* Desktop Navigation */}

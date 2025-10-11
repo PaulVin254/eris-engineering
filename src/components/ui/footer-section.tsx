@@ -56,9 +56,9 @@ function ErisFooter() {
               <img
                 src="/eris-engineering-logo.svg"
                 alt="Eris Engineering"
-                className="h-16 w-auto"
+                className="h-20 w-auto sm:h-24"
               />
-            </div>{" "}
+            </div>
             <p className="mb-6 text-white/80 leading-relaxed">
               Building dreams for Kenyan families abroad with transparency,
               trust, and professional excellence. Your peace of mind is our
