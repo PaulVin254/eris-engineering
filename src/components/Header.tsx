@@ -11,12 +11,11 @@ const Header = () => {
         {/* Logo */}
         <a href="/" className="flex items-center space-x-2">
           <img
-            src="/eris-engineering-logo-nav.svg"
+            src="/eris-engineering-logo.svg"
             alt="Eris Engineering"
-            className="h-10 w-auto"
+            className="h-12 w-auto"
           />
-        </a>
-
+        </a>{" "}
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a
@@ -50,7 +49,6 @@ const Header = () => {
             Contact
           </a>
         </nav>
-
         {/* Contact Info & CTA */}
         <div className="hidden lg:flex items-center space-x-4">
           <div className="flex items-center space-x-1 text-sm text-muted-foreground">
@@ -61,7 +59,6 @@ const Header = () => {
             Free Consultation
           </Button>
         </div>
-
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2"

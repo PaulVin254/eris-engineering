@@ -254,10 +254,9 @@ const HeroHeader = () => {
                 <img
                   src="/eris-engineering-logo-nav.svg"
                   alt="Eris Engineering"
-                  className="h-10 w-auto"
+                  className="h-12 w-auto"
                 />
-              </a>
-
+              </a>{" "}
               <button
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState == true ? "Close Menu" : "Open Menu"}

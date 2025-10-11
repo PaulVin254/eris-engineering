@@ -56,22 +56,19 @@ function ErisFooter() {
               <img
                 src="/eris-engineering-logo.svg"
                 alt="Eris Engineering"
-                className="h-10 w-auto"
+                className="h-16 w-auto"
               />
-            </div>
-
+            </div>{" "}
             <p className="mb-6 text-white/80 leading-relaxed">
               Building dreams for Kenyan families abroad with transparency,
               trust, and professional excellence. Your peace of mind is our
               priority.
             </p>
-
             <h3 className="mb-4 text-lg font-semibold">Stay Updated</h3>
             <p className="mb-4 text-white/70 text-sm">
               Get construction updates, industry insights, and exclusive offers
               for diaspora families.
             </p>
-
             <form className="relative mb-6" onSubmit={handleNewsletterSubmit}>
               <Input
                 type="email"
@@ -90,7 +87,6 @@ function ErisFooter() {
                 <span className="sr-only">Subscribe</span>
               </Button>
             </form>
-
             <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
           </div>
 
