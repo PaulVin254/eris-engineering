@@ -146,13 +146,13 @@ const About = () => {
               <div className="pt-8">
                 <div className="flex items-center justify-center gap-4">
                   <Avatar className="h-16 w-16 border-2 border-orange-500">
-                    <AvatarImage src="/placeholder-avatar.jpg" />
-                    <AvatarFallback>PV</AvatarFallback>
+                    <AvatarImage src="/paul-wakoli.jpg" />
+                    <AvatarFallback>PW</AvatarFallback>
                   </Avatar>
                   <div className="text-left">
-                    <p className="font-bold text-lg">Paul Vincent</p>
+                    <p className="font-bold text-lg">Paul Wakoli</p>
                     <p className="text-sm text-muted-foreground">
-                      Founder & Lead Engineer
+                      Founder & Civil Engineer
                     </p>
                   </div>
                 </div>
@@ -224,34 +224,48 @@ const About = () => {
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Eng. Paul Vincent",
-                  role: "Project Director",
+                  name: "Paul Wakoli",
+                  role: "Civil Engineer",
                   bg: "bg-blue-500",
+                  photo: "/paul-wakoli.jpg",
                 },
                 {
-                  name: "Sarah Kamau",
-                  role: "Lead Architect",
+                  name: "Brian Kibet",
+                  role: "Civil Engineer",
                   bg: "bg-purple-500",
+                  photo: "/brian-kibet.jpg",
                 },
                 {
-                  name: "David Ochieng",
-                  role: "Structural Engineer",
+                  name: "Annelise Nyanga",
+                  role: "Civil Engineer",
                   bg: "bg-green-500",
+                  photo: null,
                 },
                 {
-                  name: "Grace Wanjiku",
-                  role: "Client Liaison (UK)",
+                  name: "Peter Macharia",
+                  role: "CFO",
                   bg: "bg-orange-500",
+                  photo: null,
                 },
               ].map((member, i) => (
                 <div key={i} className="group relative">
                   <div className="aspect-[3/4] bg-slate-800 rounded-xl overflow-hidden relative mb-4">
-                    <div
-                      className={`absolute inset-0 ${member.bg} opacity-20 group-hover:opacity-30 transition-opacity`}
-                    ></div>
-                    <div className="absolute inset-0 flex items-center justify-center text-slate-600">
-                      <Users className="w-16 h-16 opacity-50" />
-                    </div>
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <>
+                        <div
+                          className={`absolute inset-0 ${member.bg} opacity-20 group-hover:opacity-30 transition-opacity`}
+                        ></div>
+                        <div className="absolute inset-0 flex items-center justify-center text-slate-600">
+                          <Users className="w-16 h-16 opacity-50" />
+                        </div>
+                      </>
+                    )}
                   </div>
                   <h3 className="text-xl font-bold">{member.name}</h3>
                   <p className="text-slate-400">{member.role}</p>
