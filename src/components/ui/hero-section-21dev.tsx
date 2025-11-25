@@ -213,11 +213,11 @@ export function HeroSection21Dev() {
 }
 
 const menuItems = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#" },
-  { name: "Projects", href: "#" },
-  { name: "Our Process", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Our Process", href: "/process" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const HeroHeader = () => {
@@ -247,7 +247,7 @@ const HeroHeader = () => {
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full justify-between lg:w-auto">
               <a
-                href="#"
+                href="/"
                 aria-label="home"
                 className="flex items-center space-x-2"
               >
