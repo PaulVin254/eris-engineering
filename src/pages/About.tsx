@@ -239,13 +239,13 @@ const About = () => {
                   name: "Annelise Nyanga",
                   role: "Civil Engineer",
                   bg: "bg-green-500",
-                  photo: null,
+                  photo: "/annelise-nyanga.jpg",
                 },
                 {
                   name: "Peter Macharia",
                   role: "CFO",
                   bg: "bg-orange-500",
-                  photo: null,
+                  photo: "/peter-macharia.jpg",
                 },
               ].map((member, i) => (
                 <div key={i} className="group relative">
