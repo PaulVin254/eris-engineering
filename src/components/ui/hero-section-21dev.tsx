@@ -115,6 +115,31 @@ export function HeroSection21Dev() {
                   </p>
                 </AnimatedGroup>
 
+                {/* WARNING Hook - Sabri Suby Style */}
+                <AnimatedGroup variants={transitionVariants}>
+                  <div className="mt-8 sm:mt-10 max-w-3xl mx-auto">
+                    <div className="bg-gradient-to-r from-red-500/10 via-yellow-500/10 to-red-500/10 border-2 border-red-500/30 rounded-2xl p-4 sm:p-6 backdrop-blur-sm shadow-lg shadow-red-500/10">
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl sm:text-3xl shrink-0 animate-pulse">
+                          ⚠️
+                        </span>
+                        <div>
+                          <p className="text-sm sm:text-base md:text-lg font-bold text-red-600 dark:text-red-400 leading-tight uppercase">
+                            WARNING: Do Not Break Ground Until You Read This.
+                          </p>
+                          <p className="text-xs sm:text-sm md:text-base text-foreground/90 mt-2 leading-relaxed">
+                            Contractors rely on your ignorance.{" "}
+                            <span className="font-bold text-red-600 dark:text-red-400">
+                              Our AI Engine reveals the true market rates in
+                              seconds.
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </AnimatedGroup>
+
                 <AnimatedGroup
                   variants={{
                     container: {
@@ -127,30 +152,44 @@ export function HeroSection21Dev() {
                     },
                     ...transitionVariants,
                   }}
-                  className="mt-8 sm:mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row"
+                  className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-3 sm:gap-4"
                 >
+                  {/* Primary CTA - AI Calculator */}
                   <div
                     key={1}
-                    className="bg-foreground/10 rounded-[14px] border p-0.5"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-[16px] p-1 shadow-xl shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 scale-100 hover:scale-105"
                   >
                     <Button
                       size="lg"
-                      className="rounded-xl px-4 sm:px-5 text-sm sm:text-base bg-orange-500 hover:bg-orange-600"
+                      onClick={() => (window.location.href = "/calculator")}
+                      className="rounded-xl px-6 sm:px-8 py-6 sm:py-8 text-base sm:text-lg md:text-xl font-black bg-orange-500 hover:bg-orange-600 h-auto uppercase tracking-wide"
                     >
-                      <span className="text-nowrap">Get Free Consultation</span>
-                      <span className="text-xs sm:text-sm ml-2 opacity-90">
-                        (Worth KES 5,000)
+                      <span className="text-wrap text-center">
+                        REVEAL MY TRUE CONSTRUCTION COST{" "}
+                        <br className="sm:hidden" />
+                        <span className="text-sm sm:text-base font-normal opacity-90 normal-case block sm:inline sm:ml-2">
+                          (Worth KES 50,000 - Free Today)
+                        </span>
                       </span>
                     </Button>
                   </div>
-                  <Button
-                    key={2}
-                    size="lg"
-                    variant="ghost"
-                    className="h-11 rounded-xl px-4 sm:px-5 text-sm sm:text-base"
-                  >
-                    <span className="text-nowrap">Download Free Guide</span>
-                  </Button>
+
+                  {/* Secondary CTA */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <div className="bg-foreground/10 rounded-[14px] border p-0.5">
+                      <Button
+                        size="lg"
+                        className="rounded-xl px-4 sm:px-5 text-sm sm:text-base bg-foreground hover:bg-foreground/90"
+                      >
+                        <span className="text-nowrap">
+                          Get Free Consultation
+                        </span>
+                        <span className="text-xs sm:text-sm ml-2 opacity-90">
+                          (Worth KES 5,000)
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
                 </AnimatedGroup>
 
                 {/* Urgency text */}
