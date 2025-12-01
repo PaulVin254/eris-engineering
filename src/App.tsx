@@ -13,6 +13,8 @@ import ConceptsGallery from "./pages/ConceptsGallery";
 import OnyxVilla from "./pages/OnyxVilla";
 import QuartzLinear from "./pages/QuartzLinear";
 import CedarHorizon from "./pages/CedarHorizon";
+import BronzeVertical from "./pages/BronzeVertical";
+import TeakGeometric from "./pages/TeakGeometric";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,11 @@ const App = () => (
           <Route path="/projects/onyx-villa" element={<OnyxVilla />} />
           <Route path="/projects/quartz-linear" element={<QuartzLinear />} />
           <Route path="/projects/cedar-horizon" element={<CedarHorizon />} />
+          <Route
+            path="/projects/bronze-vertical"
+            element={<BronzeVertical />}
+          />
+          <Route path="/projects/teak-geometric" element={<TeakGeometric />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
