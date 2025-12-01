@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -66,19 +67,51 @@ const Contact = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      console.log(values);
-      setIsSubmitting(false);
+    
+    try {
+      const { data, error } = await supabase
+        .from('contact_leads')
+        .insert([
+          {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            project_type: values.projectType,
+            budget_range: values.budgetRange,
+            message: values.message || null,
+            created_at: new Date().toISOString(),
+          }
+        ])
+        .select();
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Submission Error",
+          description: "There was an issue submitting your form. Please try again or contact us directly.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       toast({
         title: "Strategy Session Requested!",
         description:
           "We've received your details. An engineer will contact you within 2 hours.",
       });
       form.reset();
-    }, 1500);
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your form. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
