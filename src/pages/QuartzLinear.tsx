@@ -113,58 +113,61 @@ const QuartzLinear = () => {
       </section>
 
       {/* 4. The "Engineer's Note" */}
-      <section className="py-20 px-4 bg-slate-50">
+      <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="bg-white border-l-4 border-orange-500 shadow-lg rounded-r-xl p-8 md:p-12"
+            className="bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 overflow-hidden relative"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="bg-orange-100 p-3 rounded-full">
-                <ClipboardCheck className="w-8 h-8 text-orange-600" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                Eris Engineering Constructability Note
-              </h2>
-            </div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
 
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="bg-white p-4 rounded-2xl shadow-sm">
+                  <ClipboardCheck className="w-8 h-8 text-orange-600" />
+                </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg">
-                    Linear Brick Cladding
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                    Eris Engineering Note
+                  </h2>
+                  <p className="text-slate-500">
+                    Technical specifications & constructability
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-3">
+                  <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">01.</span> Linear Brick
+                    Cladding
                   </h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Heavy masonry veneer anchored with stainless steel wall ties
                     every 450mm for stability and long-term durability without
                     cracking.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">
-                    Flush Thresholds
+                <div className="space-y-3">
+                  <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">02.</span> Flush
+                    Thresholds
                   </h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Engineered hidden slot-drainage system at door tracks allows
                     for a zero-step luxury finish between indoor and outdoor
                     spaces while preventing water ingress.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-slate-900 text-lg">
-                    Cantilevered Canopy
+                <div className="space-y-3">
+                  <h3 className="font-bold text-slate-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">03.</span> Cantilevered
+                    Canopy
                   </h3>
-                  <p className="text-slate-600">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Reinforced concrete cantilever (Class 30) designed to float
                     without columns, providing shade and architectural drama.
                   </p>

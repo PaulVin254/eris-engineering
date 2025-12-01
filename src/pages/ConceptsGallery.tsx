@@ -73,7 +73,8 @@ const projects: Project[] = [
     bedrooms: 4,
     area: 400,
     roofType: "Flat Roof",
-    description: "Textural Modernist Villa. Warm earth tones and floating volumes.",
+    description:
+      "Textural Modernist Villa. Warm earth tones and floating volumes.",
     isComingSoon: false,
   },
   {
