@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const menuItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
   { name: "Concepts", href: "/concepts" },
+  { name: "Projects", href: "/projects" },
+  { name: "About", href: "/about" },
   { name: "Our Process", href: "/process" },
   { name: "Contact", href: "/contact" },
 ];
@@ -108,9 +108,9 @@ const Header = () => {
                 <Button
                   size="sm"
                   className="bg-primary text-primary-foreground hover:bg-primary/90 whitespace-nowrap rounded-full px-6"
-                  onClick={() => (window.location.href = "/contact")}
+                  onClick={() => (window.location.href = "/calculator")}
                 >
-                  <span>Free Consultation</span>
+                  <span>Get Free Estimate</span>
                 </Button>
               </div>
             </div>
