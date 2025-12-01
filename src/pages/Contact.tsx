@@ -69,10 +69,10 @@ const Contact = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    
+
     try {
       const { data, error } = await supabase
-        .from('contact_leads')
+        .from("contact_leads")
         .insert([
           {
             name: values.name,
@@ -82,15 +82,16 @@ const Contact = () => {
             budget_range: values.budgetRange,
             message: values.message || null,
             created_at: new Date().toISOString(),
-          }
+          },
         ])
         .select();
 
       if (error) {
-        console.error('Supabase error:', error);
+        console.error("Supabase error:", error);
         toast({
           title: "Submission Error",
-          description: "There was an issue submitting your form. Please try again or contact us directly.",
+          description:
+            "There was an issue submitting your form. Please try again or contact us directly.",
           variant: "destructive",
         });
         return;
@@ -103,10 +104,11 @@ const Contact = () => {
       });
       form.reset();
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error("Submission error:", error);
       toast({
         title: "Submission Error",
-        description: "There was an issue submitting your form. Please try again or contact us directly.",
+        description:
+          "There was an issue submitting your form. Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {

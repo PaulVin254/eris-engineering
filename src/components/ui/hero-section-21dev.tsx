@@ -40,7 +40,7 @@ export function HeroSection21Dev() {
           <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
         </div>
         <section>
-          <div className="relative pt-16 sm:pt-20 md:pt-28 lg:pt-36">
+          <div className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-40">
             <AnimatedGroup
               variants={{
                 container: {
@@ -126,12 +126,12 @@ export function HeroSection21Dev() {
                         </span>
                         <div>
                           <p className="text-sm sm:text-base md:text-lg font-bold text-red-600 dark:text-red-400 leading-tight uppercase">
-                            WARNING: Do Not Break Ground Until You Read This.
+                            Don't get ripped off... know your numbers first.
                           </p>
                           <p className="text-xs sm:text-sm md:text-base text-foreground/90 mt-2 leading-relaxed">
-                            Contractors rely on your ignorance.{" "}
+                            Contractors might quote you KES 8M for a 5M house.{" "}
                             <span className="font-bold text-red-600 dark:text-red-400">
-                              Our AI Engine reveals the true market rates in
+                              Our AI Calculator reveals the true cost in
                               seconds.
                             </span>
                           </p>
@@ -156,47 +156,19 @@ export function HeroSection21Dev() {
                   className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-3 sm:gap-4"
                 >
                   {/* Primary CTA - AI Calculator */}
-                  <div
-                    key={1}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-[16px] p-1 shadow-xl shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 scale-100 hover:scale-105"
+                  <Button
+                    size="lg"
+                    onClick={() => (window.location.href = "/calculator")}
+                    className="rounded-full px-8 py-6 text-base sm:text-lg font-semibold bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
                   >
-                    <Button
-                      size="lg"
-                      onClick={() => (window.location.href = "/calculator")}
-                      className="rounded-xl px-6 sm:px-8 py-6 sm:py-8 text-base sm:text-lg md:text-xl font-black bg-orange-500 hover:bg-orange-600 h-auto uppercase tracking-wide"
-                    >
-                      <span className="text-wrap text-center">
-                        REVEAL MY TRUE CONSTRUCTION COST{" "}
-                        <br className="sm:hidden" />
-                        <span className="text-sm sm:text-base font-normal opacity-90 normal-case block sm:inline sm:ml-2">
-                          (Worth KES 50,000 - Free Today)
-                        </span>
-                      </span>
-                    </Button>
-                  </div>
-
-                  {/* Secondary CTA */}
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <div className="bg-foreground/10 rounded-[14px] border p-0.5">
-                      <Button
-                        size="lg"
-                        className="rounded-xl px-4 sm:px-5 text-sm sm:text-base bg-foreground hover:bg-foreground/90"
-                      >
-                        <span className="text-nowrap">
-                          Get Free Consultation
-                        </span>
-                        <span className="text-xs sm:text-sm ml-2 opacity-90">
-                          (Worth KES 5,000)
-                        </span>
-                      </Button>
-                    </div>
-                  </div>
+                    Reveal My True Construction Cost
+                  </Button>
                 </AnimatedGroup>
 
                 {/* Urgency text */}
                 <AnimatedGroup variants={transitionVariants}>
                   <p className="text-xs sm:text-sm text-muted-foreground text-center mt-4 sm:mt-6">
-                    ⏰ Limited: Only 5 homes per month qualify for our guarantee
+                    ⏰ Limited: Only 5 free estimates remaining for this month
                   </p>
                 </AnimatedGroup>
               </div>
