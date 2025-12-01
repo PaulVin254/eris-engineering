@@ -227,25 +227,25 @@ const About = () => {
                   name: "Paul Wakoli",
                   role: "Civil Engineer",
                   bg: "bg-blue-500",
-                  photo: "/paul-wakoli.jpg",
+                  photo: "/engineer-paul-headshot.png",
                 },
                 {
                   name: "Brian Kibet",
                   role: "Civil Engineer",
                   bg: "bg-purple-500",
-                  photo: "/brian-kibet.jpg",
+                  photo: "/engineer-kibet-photo.png",
                 },
                 {
                   name: "Annelise Nyanga",
                   role: "Civil Engineer",
                   bg: "bg-green-500",
-                  photo: "/annelise-nyanga.jpg",
+                  photo: "/engineer-annelise-photo.png",
                 },
                 {
                   name: "Peter Macharia",
                   role: "CFO",
                   bg: "bg-orange-500",
-                  photo: "/peter-macharia.jpg",
+                  photo: "/peter-photo.png",
                 },
               ].map((member, i) => (
                 <div key={i} className="group relative">
