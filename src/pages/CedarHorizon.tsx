@@ -114,58 +114,67 @@ const CedarHorizon = () => {
       </section>
 
       {/* 4. The "Engineer's Note" */}
-      <section className="py-20 px-4 bg-stone-50">
+      <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="bg-white border-l-4 border-orange-500 shadow-lg rounded-r-xl p-8 md:p-12"
+            className="bg-stone-50 border border-stone-100 rounded-3xl p-8 md:p-12 overflow-hidden relative"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="bg-orange-100 p-3 rounded-full">
-                <ClipboardCheck className="w-8 h-8 text-orange-600" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-stone-900">
-                Eris Engineering Constructability Note
-              </h2>
-            </div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2" />
 
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="relative shrink-0">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg overflow-hidden">
+                    <img
+                      src="/engineer-paul-headshot.png"
+                      alt="Engineer Paul"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <h3 className="font-bold text-stone-900 text-lg">
-                    Structural Steel Frame
+                  <h2 className="text-2xl md:text-3xl font-bold text-stone-900">
+                    Engineer's Note
+                  </h2>
+                  <p className="text-stone-500">
+                    Technical specifications & constructability
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-3">
+                  <h3 className="font-bold text-stone-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">01.</span> Structural
+                    Steel Frame
                   </h3>
-                  <p className="text-stone-600">
+                  <p className="text-stone-600 text-sm leading-relaxed">
                     Hidden steel skeleton integrated into window frames to
                     support the roof load and prevent glass buckling under the
                     weight of the expansive roof.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-stone-900 text-lg">
-                    Rainscreen Cladding
+                <div className="space-y-3">
+                  <h3 className="font-bold text-stone-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">02.</span> Rainscreen
+                    Cladding
                   </h3>
-                  <p className="text-stone-600">
+                  <p className="text-stone-600 text-sm leading-relaxed">
                     Timber installed on a ventilated rainscreen grid with
                     breathable membrane to prevent warping in Kenyan weather
                     while allowing the building to breathe.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-stone-900 text-lg">
-                    Zero-Gradient Ceilings
+                <div className="space-y-3">
+                  <h3 className="font-bold text-stone-900 text-lg flex items-center gap-2">
+                    <span className="text-orange-500">03.</span> Zero-Gradient
+                    Ceilings
                   </h3>
-                  <p className="text-stone-600">
+                  <p className="text-stone-600 text-sm leading-relaxed">
                     Precision truss leveling and high-grade insulation to
                     prevent heat transfer, ensuring the flat ceiling aesthetic
                     doesn't compromise thermal performance.

@@ -231,12 +231,18 @@ const OnyxVilla = () => {
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-10">
-                <div className="bg-white p-4 rounded-2xl shadow-sm">
-                  <ClipboardCheck className="w-8 h-8 text-orange-600" />
+                <div className="relative shrink-0">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg overflow-hidden">
+                    <img
+                      src="/engineer-paul-headshot.png"
+                      alt="Engineer Paul"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                    Eris Engineering Note
+                    Engineer's Note
                   </h2>
                   <p className="text-slate-500">
                     Technical specifications & constructability

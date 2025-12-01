@@ -125,58 +125,65 @@ const BronzeVertical = () => {
       </section>
 
       {/* 4. The "Engineer's Note" */}
-      <section className="py-20 px-4 bg-stone-900 text-white">
+      <section className="py-24 px-4 bg-stone-900 text-white">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="bg-stone-800 border-l-4 border-amber-600 shadow-2xl rounded-r-xl p-8 md:p-12"
+            className="bg-stone-800 border border-stone-700 rounded-3xl p-8 md:p-12 overflow-hidden relative shadow-2xl"
           >
-            <div className="flex items-center gap-4 mb-8">
-              <div className="bg-stone-700 p-3 rounded-full">
-                <ClipboardCheck className="w-8 h-8 text-amber-500" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Eris Engineering Constructability Note
-              </h2>
-            </div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2" />
 
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-10">
+                <div className="relative shrink-0">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-amber-600 shadow-lg overflow-hidden">
+                    <img
+                      src="/engineer-paul-headshot.png"
+                      alt="Engineer Paul"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <h3 className="font-bold text-white text-lg">
-                    Structural Frame
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                    Eris Engineering Note
+                  </h2>
+                  <p className="text-stone-400">
+                    Technical specifications & constructability
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="space-y-3">
+                  <h3 className="font-bold text-white text-lg flex items-center gap-2">
+                    <span className="text-amber-500">01.</span> Structural Frame
                   </h3>
-                  <p className="text-stone-300">
+                  <p className="text-stone-300 text-sm leading-relaxed">
                     Reinforced concrete moment-resisting frame (Grid System) to
                     handle vertical loads without thick internal walls,
                     maximizing usable floor area.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-white text-lg">
-                    Cladding System
+                <div className="space-y-3">
+                  <h3 className="font-bold text-white text-lg flex items-center gap-2">
+                    <span className="text-amber-500">02.</span> Cladding System
                   </h3>
-                  <p className="text-stone-300">
+                  <p className="text-stone-300 text-sm leading-relaxed">
                     Bronze finish using Aluminium Composite Panels (ACP) on a
                     steel sub-frame with thermal expansion joints for durability
                     and aesthetic precision.
                   </p>
                 </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <CheckCircle2 className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-white text-lg">
-                    Rooftop Waterproofing
+                <div className="space-y-3">
+                  <h3 className="font-bold text-white text-lg flex items-center gap-2">
+                    <span className="text-amber-500">03.</span> Rooftop
+                    Waterproofing
                   </h3>
-                  <p className="text-stone-300">
+                  <p className="text-stone-300 text-sm leading-relaxed">
                     Triple-layer tanking system with protective screed for the
                     jacuzzi zone, ensuring zero leakage to the floors below.
                   </p>
