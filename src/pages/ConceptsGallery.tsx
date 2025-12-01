@@ -20,14 +20,15 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "1",
-    title: "The Onyx Villa",
-    slug: "/projects/onyx-villa",
-    image: "/onyx-exterior.jpg",
+    id: "5",
+    title: "The Teak Geometric",
+    slug: "/projects/teak-geometric",
+    image: "/teak-hero.jpg",
     bedrooms: 4,
-    area: 350,
+    area: 400,
     roofType: "Flat Roof",
-    description: "A modern masterpiece optimized for narrow plots.",
+    description:
+      "Textural Modernist Villa. Warm earth tones and floating volumes.",
     isComingSoon: false,
   },
   {
@@ -66,15 +67,14 @@ const projects: Project[] = [
     isComingSoon: false,
   },
   {
-    id: "5",
-    title: "The Teak Geometric",
-    slug: "/projects/teak-geometric",
-    image: "/teak-hero.jpg",
+    id: "1",
+    title: "The Onyx Villa",
+    slug: "/projects/onyx-villa",
+    image: "/onyx-exterior.jpg",
     bedrooms: 4,
-    area: 400,
+    area: 350,
     roofType: "Flat Roof",
-    description:
-      "Textural Modernist Villa. Warm earth tones and floating volumes.",
+    description: "A modern masterpiece optimized for narrow plots.",
     isComingSoon: false,
   },
   {
