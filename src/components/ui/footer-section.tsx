@@ -184,7 +184,7 @@ function ErisFooter() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-sm">
-                  <div className="text-white/90">+254 700 123 456</div>
+                  <div className="text-white/90">+254 717 297 022</div>
                   <div className="text-white/60">WhatsApp available</div>
                 </div>
               </div>
