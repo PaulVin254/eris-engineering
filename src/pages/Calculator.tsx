@@ -38,6 +38,7 @@ interface Message {
 const Calculator = () => {
   const [prompt, setPrompt] = useState("");
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [sessionStarted, setSessionStarted] = useState(false);
@@ -50,10 +51,11 @@ const Calculator = () => {
       return;
     }
 
-    if (!sessionStarted && !email.trim()) {
+    if (!sessionStarted && (!email.trim() || !name.trim())) {
       toast({
-        title: "Email Required",
-        description: "Please provide your email to start the consultation.",
+        title: "Details Required",
+        description:
+          "Please provide your name and email to start the consultation.",
         variant: "destructive",
       });
       return;
@@ -78,6 +80,7 @@ const Calculator = () => {
         body: JSON.stringify({
           user_input: userMessage.content,
           email: email,
+          name: name,
         }),
       });
 
@@ -157,7 +160,14 @@ const Calculator = () => {
               Consultation Room
             </CardTitle>
             {!sessionStarted && (
-              <div className="mt-2">
+              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+                <Input
+                  type="text"
+                  placeholder="Enter your name..."
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-400"
+                />
                 <Input
                   type="email"
                   placeholder="Enter your email to start..."
