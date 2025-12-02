@@ -35,6 +35,74 @@ interface Message {
   timestamp: Date;
 }
 
+// Helper component to format the AI response nicely
+const FormattedMessage = ({ content }: { content: string }) => {
+  // 1. Heuristic: If the content is a single long line but has bullet points, inject newlines
+  let processedContent = content;
+  if (!content.includes("\n") && content.includes("* **")) {
+    processedContent = content.replace(/\* \*\*/g, "\n* **");
+  }
+
+  // 2. Helper to parse bold text (**text**)
+  const parseBold = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={index} className="font-bold text-slate-900">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
+  // 3. Split by newlines and render
+  const lines = processedContent.split("\n");
+
+  return (
+    <div className="space-y-1.5 text-sm leading-relaxed text-slate-700">
+      {lines.map((line, i) => {
+        const trimmed = line.trim();
+
+        if (!trimmed) return <div key={i} className="h-2" />;
+
+        // List items (start with * or -)
+        if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+          return (
+            <div key={i} className="flex gap-2 ml-1">
+              <span className="text-orange-500 font-bold mt-0.5">•</span>
+              <span>{parseBold(trimmed.substring(2))}</span>
+            </div>
+          );
+        }
+
+        // Headers (lines that are fully bold or start with #)
+        if (
+          trimmed.startsWith("#") ||
+          (trimmed.startsWith("**") &&
+            trimmed.endsWith("**") &&
+            trimmed.length < 60)
+        ) {
+          const text = trimmed.replace(/^#+\s*/, "");
+          return (
+            <h3
+              key={i}
+              className="font-bold text-slate-900 mt-3 mb-1 text-base"
+            >
+              {parseBold(text)}
+            </h3>
+          );
+        }
+
+        // Regular paragraphs
+        return <p key={i}>{parseBold(line)}</p>;
+      })}
+    </div>
+  );
+};
+
 const Calculator = () => {
   const [prompt, setPrompt] = useState("");
   const [email, setEmail] = useState("");
@@ -197,12 +265,18 @@ const Calculator = () => {
                 >
                   <ChatBubbleAvatar
                     fallback={msg.role === "user" ? "US" : "FU"}
-                    src={msg.role === "user" ? "" : "/placeholder.svg"}
+                    src={
+                      msg.role === "user" ? "" : "/engineer-paul-headshot.png"
+                    }
                   />
                   <ChatBubbleMessage
                     variant={msg.role === "user" ? "sent" : "received"}
                   >
-                    {msg.content}
+                    {msg.role === "user" ? (
+                      msg.content
+                    ) : (
+                      <FormattedMessage content={msg.content} />
+                    )}
                     {msg.role === "assistant" && (
                       <div className="mt-2 flex gap-2">
                         <Button
@@ -223,7 +297,10 @@ const Calculator = () => {
               ))}
               {loading && (
                 <ChatBubble variant="received">
-                  <ChatBubbleAvatar fallback="FU" src="/placeholder.svg" />
+                  <ChatBubbleAvatar
+                    fallback="FU"
+                    src="/engineer-paul-headshot.png"
+                  />
                   <ChatBubbleMessage isLoading />
                 </ChatBubble>
               )}
