@@ -192,9 +192,7 @@ function ErisFooter() {
               <div className="flex items-start space-x-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <div className="text-sm">
-                  <div className="text-white/90">
-                    hello@erisengineering.co.ke
-                  </div>
+                  <div className="text-white/90">paul@eris.co.ke</div>
                   <div className="text-white/60">24/7 support</div>
                 </div>
               </div>

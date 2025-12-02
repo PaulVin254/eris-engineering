@@ -200,7 +200,7 @@ const Contact = () => {
                   </a>
 
                   <a
-                    href="mailto:info@erisengineering.com"
+                    href="mailto:paul@eris.co.ke"
                     className="flex items-center gap-4 p-4 rounded-xl hover:bg-muted transition-colors group"
                   >
                     <div className="bg-orange-100 p-3 rounded-full group-hover:bg-orange-200 transition-colors">
@@ -208,9 +208,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email Us</p>
-                      <p className="font-bold text-lg">
-                        info@erisengineering.com
-                      </p>
+                      <p className="font-bold text-lg">paul@eris.co.ke</p>
                     </div>
                   </a>
 
