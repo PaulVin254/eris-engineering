@@ -8,6 +8,8 @@ import {
   Paperclip,
   Mic,
   CornerDownLeft,
+  Loader2,
+  Mail,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,6 +35,9 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
+  showEstimateButton?: boolean;
+  estimateData?: any;
+  emailStatus?: "idle" | "sending" | "sent" | "error";
 }
 
 // Helper component to format the AI response nicely
@@ -112,6 +117,49 @@ const Calculator = () => {
   const [sessionStarted, setSessionStarted] = useState(false);
   const { toast } = useToast();
 
+  const handleGenerateEstimate = async (estimateData: any, index: number) => {
+    setMessages((prev) =>
+      prev.map((msg, i) =>
+        i === index ? { ...msg, emailStatus: "sending" } : msg
+      )
+    );
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${apiUrl}/api/generate-estimate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          estimate_data: estimateData,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      setMessages((prev) =>
+        prev.map((msg, i) =>
+          i === index ? { ...msg, emailStatus: "sent" } : msg
+        )
+      );
+      toast({
+        title: "Report Sent!",
+        description: `The estimate has been emailed to ${email}`,
+      });
+    } catch (e) {
+      setMessages((prev) =>
+        prev.map((msg, i) =>
+          i === index ? { ...msg, emailStatus: "error" } : msg
+        )
+      );
+      toast({
+        title: "Error",
+        description: "Failed to send the email. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -168,6 +216,9 @@ const Calculator = () => {
         role: "assistant",
         content: fundiResponse,
         timestamp: new Date(),
+        showEstimateButton: data.show_estimate_button,
+        estimateData: data.estimate_data,
+        emailStatus: "idle",
       };
       setMessages((prev) => [...prev, assistantMessage]);
       setSessionStarted(true);
@@ -278,18 +329,53 @@ const Calculator = () => {
                       <FormattedMessage content={msg.content} />
                     )}
                     {msg.role === "assistant" && (
-                      <div className="mt-2 flex gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="h-6 w-6"
-                          onClick={() => {
-                            navigator.clipboard.writeText(msg.content);
-                            toast({ title: "Copied" });
-                          }}
-                        >
-                          <Copy className="h-3 w-3" />
-                        </Button>
+                      <div className="mt-2 flex flex-col gap-2 items-start">
+                        {msg.showEstimateButton && (
+                          <Button
+                            size="sm"
+                            onClick={() =>
+                              handleGenerateEstimate(msg.estimateData, idx)
+                            }
+                            disabled={
+                              msg.emailStatus === "sending" ||
+                              msg.emailStatus === "sent"
+                            }
+                            className={`gap-2 transition-all duration-300 ${
+                              msg.emailStatus === "sent"
+                                ? "bg-green-600 hover:bg-green-700 text-white"
+                                : "bg-orange-500 hover:bg-orange-600 text-white"
+                            }`}
+                          >
+                            {msg.emailStatus === "sending" ? (
+                              <>
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                                Sending Report...
+                              </>
+                            ) : msg.emailStatus === "sent" ? (
+                              <>
+                                <Check className="h-4 w-4" />✅ Sent to Email
+                              </>
+                            ) : (
+                              <>
+                                <Mail className="h-4 w-4" />
+                                Email Me Official Report
+                              </>
+                            )}
+                          </Button>
+                        )}
+                        <div className="flex gap-2">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6"
+                            onClick={() => {
+                              navigator.clipboard.writeText(msg.content);
+                              toast({ title: "Copied" });
+                            }}
+                          >
+                            <Copy className="h-3 w-3" />
+                          </Button>
+                        </div>
                       </div>
                     )}
                   </ChatBubbleMessage>
