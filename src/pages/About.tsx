@@ -225,25 +225,25 @@ const About = () => {
               {[
                 {
                   name: "Paul Wakoli",
-                  role: "Civil Engineer",
+                  role: "Co-founder & engineer",
                   bg: "bg-blue-500",
                   photo: "/engineer-paul-headshot.png",
                 },
                 {
                   name: "Brian Kibet",
-                  role: "Civil Engineer",
+                  role: "Co-founder & engineer",
                   bg: "bg-purple-500",
                   photo: "/engineer-kibet-photo.png",
                 },
                 {
                   name: "Annelise Nyanga",
-                  role: "Civil Engineer",
+                  role: "Co-founder & engineer",
                   bg: "bg-green-500",
                   photo: "/engineer-annelise-photo.png",
                 },
                 {
                   name: "Peter Macharia",
-                  role: "CFO",
+                  role: "Co-founder & finance",
                   bg: "bg-orange-500",
                   photo: "/peter-photo.png",
                 },
