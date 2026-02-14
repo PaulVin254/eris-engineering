@@ -348,6 +348,81 @@ const BOQAudit = () => {
         </div>
       </section>
 
+      {/* Industry Statistics Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 uppercase tracking-tight">
+              The Numbers Don’t Lie
+            </h2>
+            <p className="text-lg text-slate-600">
+              Across mid-range residential projects in Kenya (10M–30M bracket):
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {[
+              {
+                value: "7 out of 10",
+                label: "Exceed budget",
+                delay: 0,
+              },
+              {
+                value: "22%–35%",
+                label: "Average overrun",
+                delay: 0.1,
+              },
+              {
+                value: "80%",
+                label: "Of delays tied to cash flow mismanagement",
+                delay: 0.2,
+              },
+              {
+                value: "60%",
+                label: "Of PC Sums under-allowanced intentionally",
+                delay: 0.3,
+              },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                className="text-center p-6 bg-slate-50 rounded-xl border border-slate-100 hover:shadow-lg transition-shadow duration-300"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: stat.delay }}
+              >
+                <div className="text-4xl lg:text-5xl font-bold text-orange-600 mb-3 font-mono">
+                  {stat.value}
+                </div>
+                <div className="text-slate-700 font-medium leading-tight">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <p className="text-xl md:text-2xl text-slate-800 font-serif italic font-medium leading-relaxed">
+              "You don’t lose money in one big theft. <br />
+              You lose it in{" "}
+              <span className="text-orange-600">tolerated ambiguity</span>."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* The Mechanics: The 3 Traps */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
