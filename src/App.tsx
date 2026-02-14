@@ -18,6 +18,7 @@ import BronzeVertical from "./pages/BronzeVertical";
 import TeakGeometric from "./pages/TeakGeometric";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import BOQAudit from "./pages/BOQAudit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/process" element={<Process />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/boq-audit" element={<BOQAudit />} />
           <Route path="/concepts" element={<ConceptsGallery />} />
           <Route path="/projects/onyx-villa" element={<OnyxVilla />} />
           <Route path="/projects/quartz-linear" element={<QuartzLinear />} />

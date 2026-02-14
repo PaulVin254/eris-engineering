@@ -1,0 +1,399 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  AlertTriangle,
+  ArrowRight,
+  Calculator,
+  CheckCircle2,
+  FileSearch,
+  HardHat,
+  ShieldAlert,
+  TrendingDown,
+  XCircle,
+  Construction,
+  Search,
+  Scale,
+  CreditCard,
+} from "lucide-react";
+
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import heroImage from "@/assets/hero-home.jpg"; // Using existing asset for now
+
+const BOQAudit = () => {
+  const [checklistScore, setChecklistScore] = useState<number>(0);
+
+  const toggleChecklist = (index: number) => {
+    // Simple state toggle logic if we wanted interactive checklist,
+    // but for now just a visual representation is likely fine or simple state
+  };
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 },
+  };
+
+  const staggerChildren = {
+    whileInView: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Construction Site in Kenya"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/80" />
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-300 font-medium mb-6 uppercase text-sm tracking-wider">
+              <ShieldAlert className="w-4 h-4" />
+              Stop The Bleeding
+            </div>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Is Your Contractor Building{" "}
+              <span className="text-orange-500">His House</span> With Your
+              Money?
+            </h1>
+
+            <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+              How to identify the "Ghost Costs" hiding in your BOQ and save up
+              to <span className="text-white font-bold">1.5M KES</span> before
+              you lay a single stone.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-lg px-8 py-6 h-auto w-full sm:w-auto"
+                >
+                  Book Your Audit Call
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
+              <p className="text-slate-400 text-sm mt-2 sm:mt-0">
+                Only 2 spots remaining for this week
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* The Problem: "The Kenyan Construction Tax" */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-3xl mx-auto text-center mb-16"
+            {...fadeInUp}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Welcome to the "Black Box"
+            </h2>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              You’ve spent years saving. You’ve looked at the floor plans. But
+              deep down, there is a nagging fear that every Kenyan homeowner
+              knows too well.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div {...fadeInUp}>
+              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
+                <h3 className="text-2xl font-bold text-orange-500 mb-4 flex items-center gap-3">
+                  <AlertTriangle className="w-8 h-8" />
+                  The Problem
+                </h3>
+                <p className="text-slate-300 mb-6">
+                  In Kenya, construction isn't just about cement and steel; it’s
+                  about the <strong>"Kenyan Construction Tax."</strong> It’s
+                  that invisible 15-20% markup that vanishes into:
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Rounding errors",
+                    "Bloated material lists",
+                    "'Unforeseen' expenses",
+                    "Ghost workers",
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-slate-200"
+                    >
+                      <XCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
+              <p className="text-xl text-slate-300 leading-relaxed mb-6">
+                You’re being asked to hand over{" "}
+                <span className="text-white font-bold">
+                  10 Million Shillings
+                </span>{" "}
+                to someone based on a "trust me" and a document (the BOQ) that
+                looks like it was written to be intentionally confusing.
+              </p>
+              <div className="p-6 bg-orange-500/10 border-l-4 border-orange-500 rounded-r-lg">
+                <p className="text-orange-200 font-medium italic">
+                  "Why does the 'final' cost always end up being 30% higher than
+                  the quote? Because the system is designed to bleed you dry."
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Mechanics: The 3 Traps */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            {...fadeInUp}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              How They Pad The Bill
+            </h2>
+            <p className="text-lg text-slate-600">
+              You aren't just paying for a house. You’re paying for the
+              contractor’s lack of precision and "side hustles."
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                icon: <Construction className="w-10 h-10 text-orange-500" />,
+                title: "The Steel Scam",
+                desc: "Your contractor specs Y12 bars where Y10s work, then 'diverts' the extra tonnage to another site.",
+              },
+              {
+                icon: <HardHat className="w-10 h-10 text-orange-500" />,
+                title: "The Excavation Myth",
+                desc: "They charge you for 100 trips of soil removal when only 60 actually left the gate.",
+              },
+              {
+                icon: <CreditCard className="w-10 h-10 text-orange-500" />,
+                title: "The PC Sum Trap",
+                desc: "They give you a low 'Prime Cost' for tiles to make the bid look cheap, only to hit you with the 'real' price later.",
+              },
+            ].map((trap, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 hover:border-orange-200 transition-colors"
+              >
+                <div className="mb-6 p-4 bg-orange-50 rounded-full w-fit">
+                  {trap.icon}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  {trap.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed">{trap.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Red Flag Checklist - Interactive Element */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <motion.div {...fadeInUp}>
+              <div className="inline-block px-4 py-1 bg-red-100 text-red-600 rounded-full text-sm font-bold mb-6">
+                THE "RED FLAG" CHECKLIST
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                Do any of these apply to your quote?
+              </h2>
+              <p className="text-lg text-slate-600 mb-8">
+                If you check more than{" "}
+                <strong className="text-slate-900">TWO</strong> of these, you
+                are currently being overcharged.
+              </p>
+
+              <div className="space-y-4">
+                {[
+                  "Are your material quantities suspiciously 'round' numbers (e.g., exactly 200 bags)?",
+                  "Does your steel reinforcement ratio exceed 100kg per cubic meter?",
+                  "Is there a 'Miscellaneous' or 'Contingency' fee higher than 3%?",
+                  "Are 'Transport' costs listed as a lump sum instead of being factored into rates?",
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-4 items-start p-4 bg-slate-50 rounded-lg border border-slate-100"
+                  >
+                    <div className="mt-1 h-5 w-5 rounded border-2 border-slate-300 flex items-center justify-center flex-shrink-0"></div>
+                    <p className="text-slate-800 font-medium">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="bg-slate-900 text-white p-8 md:p-10 rounded-2xl shadow-2xl relative overflow-hidden"
+              {...fadeInUp}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="absolute top-0 right-0 p-32 bg-orange-500/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Search className="w-6 h-6 text-orange-500" />
+                The Solution: 15-Minute BOQ Stress Test
+              </h3>
+
+              <p className="text-slate-300 mb-8 leading-relaxed">
+                We utilize Structural Optimization and Data Transparency. We
+                don't guess. We calculate. Before you commit your life savings,
+                let us run your BOQ through our Engineering Audit.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-orange-500/20 rounded-lg text-orange-400">
+                    <FileSearch className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg">Line-by-Line Audit</h4>
+                    <p className="text-sm text-slate-400">
+                      We find exactly where the "padding" is hiding.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-orange-500/20 rounded-lg text-orange-400">
+                    <Scale className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg">
+                      Structural Optimization Report
+                    </h4>
+                    <p className="text-sm text-slate-400">
+                      Save on steel and concrete without losing strength.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-2 bg-orange-500/20 rounded-lg text-orange-400">
+                    <TrendingDown className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg">
+                      The "SiteSync" Transparency Map
+                    </h4>
+                    <p className="text-sm text-slate-400">
+                      How to track every shilling in real-time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Offer / CTA Section */}
+      <section className="py-24 bg-orange-50 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute top-1/2 -right-24 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="container relative z-10 mx-auto px-4 text-center">
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+              Stop the Bleed. Save Your Millions.
+            </h2>
+
+            <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-orange-100 mb-10">
+              <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-lg mb-6">
+                <span className="text-slate-500 line-through">
+                  Standard Price: 50,000 KES
+                </span>
+                <span className="font-bold text-orange-600 bg-orange-100 px-4 py-1 rounded-full">
+                  BETA OFFER: FREE (First 5 Only)
+                </span>
+              </div>
+              <p className="text-slate-600 mb-6">
+                Why? Because we know that once you see the precision we bring to
+                your project, you won't want anyone else building your home.
+              </p>
+
+              <div className="flex flex-col gap-4 max-w-md mx-auto">
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold text-xl py-8 shadow-orange-200 shadow-lg"
+                  >
+                    Upload BOQ & Book Audit
+                  </Button>
+                </Link>
+                <p className="text-xs text-slate-500">
+                  <CheckCircle2 className="w-3 h-3 inline mr-1 text-green-500" />
+                  No obligation. 100% Confidential.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-slate-500 italic">
+              "We don't just look at the numbers; we look at the physics."
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default BOQAudit;
