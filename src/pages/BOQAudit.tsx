@@ -15,6 +15,11 @@ import {
   Search,
   Scale,
   CreditCard,
+  TrendingUp,
+  Package,
+  Users,
+  Clock,
+  FileText,
 } from "lucide-react";
 
 import Header from "@/components/Header";
@@ -175,6 +180,171 @@ const BOQAudit = () => {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Case Study / Trust Trigger Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto mb-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+              You don’t need testimonials. <br />
+              <span className="text-orange-600">
+                You need risk math + pattern recognition.
+              </span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="max-w-5xl mx-auto bg-slate-900 rounded-2xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden ring-1 ring-slate-800"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            {/* Background Texture */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl -mr-48 -mt-48 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none"></div>
+
+            <div className="relative z-10">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 border-b border-slate-700 pb-6">
+                <div>
+                  <div className="inline-block px-3 py-1 bg-orange-500/20 text-orange-400 text-xs font-bold tracking-widest uppercase rounded mb-3">
+                    Audit Case File #2491
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-mono font-bold text-white">
+                    CASE SNAPSHOT: 14.8M → 19.6M
+                  </h3>
+                  <p className="text-slate-400 mt-1 font-mono text-sm">
+                    (Without Scope Change) • Project: 4-Bedroom Maisonette
+                  </p>
+                </div>
+                <div className="text-right hidden md:block">
+                  <div className="text-4xl font-bold text-red-500 font-mono">
+                    +32%
+                  </div>
+                  <div className="text-xs text-red-400 uppercase tracking-wider">
+                    Cost Overrun
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12">
+                {/* Left Column: The Breakdown */}
+                <div>
+                  <h4 className="text-sm uppercase tracking-widest text-slate-500 mb-6 font-semibold">
+                    Where The Money Leaked
+                  </h4>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        label: "PC Sums adjusted upward",
+                        value: "+1.6M",
+                        icon: TrendingUp,
+                      },
+                      {
+                        label: "Untracked material top-ups",
+                        value: "+920K",
+                        icon: Package,
+                      },
+                      {
+                        label: '"Site logistics" & casual labour',
+                        value: "+680K",
+                        icon: Users,
+                      },
+                      {
+                        label: "Idle time (contractor absence)",
+                        value: "+1.1M",
+                        icon: Clock,
+                      },
+                      {
+                        label: "Informal variations",
+                        value: "+500K",
+                        icon: FileText,
+                      },
+                    ].map((item, i) => (
+                      <motion.div
+                        key={i}
+                        className="flex items-center justify-between group p-3 rounded-lg hover:bg-slate-800/50 transition-colors border border-transparent hover:border-slate-700"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + 0.1 * i, duration: 0.5 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="flex items-center gap-3 text-slate-300">
+                          <item.icon className="w-5 h-5 text-orange-500/70 group-hover:text-orange-500 transition-colors" />
+                          <span className="text-sm md:text-base">
+                            {item.label}
+                          </span>
+                        </div>
+                        <span className="font-mono text-red-400 font-medium">
+                          {item.value}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-700 md:hidden">
+                    <div className="flex justify-between items-center">
+                      <span className="text-slate-400">Total Overrun</span>
+                      <span className="text-red-500 font-bold font-mono text-xl">
+                        +4.8M (32%)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Chart Placeholder */}
+                <div className="flex flex-col h-full">
+                  <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700 h-full flex flex-col items-center justify-center text-center relative overflow-hidden group">
+                    {/* Placeholder Chart UI */}
+                    <div className="relative w-full max-w-xs h-40 flex items-end justify-center gap-8 mb-6 mt-4">
+                      {/* Bar 1 */}
+                      <div className="w-16 bg-slate-600 rounded-t-sm h-[75%] relative group-hover:bg-slate-500 transition-colors">
+                        <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-slate-400 font-mono">
+                          14.8M
+                        </span>
+                        <div className="absolute bottom-2 left-0 right-0 text-center text-[10px] text-slate-300 opacity-50">
+                          BOQ
+                        </div>
+                      </div>
+                      {/* Bar 2 */}
+                      <div className="w-16 bg-gradient-to-t from-red-600 to-red-500 rounded-t-sm h-full relative shadow-[0_0_30px_rgba(239,68,68,0.2)]">
+                        <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-red-400 font-bold font-mono">
+                          19.6M
+                        </span>
+                        <div className="absolute bottom-2 left-0 right-0 text-center text-[10px] text-white opacity-80">
+                          ACTUAL
+                        </div>
+                      </div>
+
+                      {/* Dotted line for overflow */}
+                      <div className="absolute top-[25%] left-0 right-0 border-t border-dashed border-red-500/30"></div>
+                      <div className="absolute top-[35%] right-0 text-[10px] text-red-500 font-mono bg-slate-800/80 px-1 rounded transform rotate-90 origin-right translate-x-4">
+                        +4.8M DRIP
+                      </div>
+                    </div>
+
+                    <div className="bg-slate-900/80 rounded-lg p-4 max-w-sm border border-slate-700">
+                      <p className="text-slate-300 italic text-sm leading-relaxed">
+                        "Nothing dramatic. Just quiet bleed. <br />
+                        <span className="text-white font-semibold not-italic">
+                          That is the Kenyan Construction Tax.
+                        </span>
+                        "
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
