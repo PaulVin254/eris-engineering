@@ -58,108 +58,147 @@ const BOQAudit = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+    <div className="min-h-screen bg-slate-950 font-sans text-slate-200">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Construction Site in Kenya"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-slate-900/80" />
-        </div>
+      {/* ═══ HERO: RED ALERT DASHBOARD ═══ */}
+      <section className="relative pt-36 pb-24 md:pt-52 md:pb-36 overflow-hidden bg-slate-950 border-b border-slate-800">
+        {/* Technical Dot-Grid Background */}
+        <div
+          className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #475569 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        {/* Hazard gradient wash */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-950 to-transparent z-[1] pointer-events-none" />
 
         <div className="container relative z-10 mx-auto px-4">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-300 font-medium mb-6 uppercase text-sm tracking-wider">
-              <ShieldAlert className="w-4 h-4" />
-              Stop The Bleeding
+            {/* Monospace Alert Badge */}
+            <div className="flex justify-center mb-10">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-orange-950/40 border border-orange-500/40 text-orange-400 font-mono text-xs font-bold tracking-[0.2em] uppercase">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500" />
+                </span>
+                PRIORITY ALERT — STOP THE BLEEDING
+              </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            {/* Headline: Massive, Uppercase, Tight */}
+            <h1 className="text-center text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-8 leading-[1.05] tracking-tight uppercase">
               Is Your Contractor Building{" "}
               <span className="text-orange-500">His House</span> With Your
               Money?
             </h1>
 
-            <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-              How to identify the "Ghost Costs" hiding in your BOQ and save up
-              to <span className="text-white font-bold">1.5M KES</span> before
-              you lay a single stone.
+            <p className="text-center text-lg md:text-xl text-slate-400 mb-14 leading-relaxed max-w-3xl mx-auto">
+              How to identify the{" "}
+              <span className="text-white font-mono font-semibold bg-slate-800/80 px-2 py-0.5 border border-slate-700">
+                "Ghost Costs"
+              </span>{" "}
+              hiding in your BOQ and save up to{" "}
+              <span className="text-orange-500 font-mono font-bold text-2xl">
+                1.5M KES
+              </span>{" "}
+              before you lay a single stone.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* CTA Row: Mechanical Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold text-lg px-8 py-6 h-auto w-full sm:w-auto"
+                  className="bg-orange-600 hover:bg-orange-500 text-white font-mono font-bold text-base px-10 py-7 h-auto rounded-none border-2 border-orange-400 shadow-[4px_4px_0px_0px_rgba(249,115,22,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(249,115,22,0.6)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all uppercase tracking-widest"
                 >
                   Book Your Audit Call
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="ml-3 w-5 h-5" />
                 </Button>
               </Link>
-              <p className="text-slate-400 text-sm mt-2 sm:mt-0">
-                Only 2 spots remaining for this week
-              </p>
+              <div className="flex items-center gap-2 text-slate-500 font-mono text-xs tracking-wider">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
+                </span>
+                ONLY 2 SLOTS REMAINING THIS WEEK
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* The Problem: "The Kenyan Construction Tax" */}
-      <section className="py-20 bg-slate-900 text-white">
+      {/* THE PROBLEM: SYSTEM FAILURE REPORT */}
+      <section className="py-24 bg-slate-950 text-white relative border-b border-slate-800">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-600/50 to-transparent" />
         <div className="container mx-auto px-4">
           <motion.div
-            className="max-w-3xl mx-auto text-center mb-16"
+            className="max-w-3xl mx-auto text-center mb-20"
             {...fadeInUp}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Welcome to the "Black Box"
+            <div className="font-mono text-orange-500 text-xs tracking-[0.25em] uppercase mb-4">
+              [ DIAGNOSTIC REPORT ]
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-tight">
+              Welcome to the{" "}
+              <span className="text-orange-500">"Black Box"</span>
             </h2>
-            <p className="text-lg text-slate-300 leading-relaxed">
-              You’ve spent years saving. You’ve looked at the floor plans. But
+            <p className="text-lg text-slate-400 leading-relaxed">
+              You've spent years saving. You've looked at the floor plans. But
               deep down, there is a nagging fear that every Kenyan homeowner
               knows too well.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeInUp}>
-              <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700">
-                <h3 className="text-2xl font-bold text-orange-500 mb-4 flex items-center gap-3">
-                  <AlertTriangle className="w-8 h-8" />
-                  The Problem
-                </h3>
-                <p className="text-slate-300 mb-6">
-                  In Kenya, construction isn't just about cement and steel; it’s
-                  about the <strong>"Kenyan Construction Tax."</strong> It’s
-                  that invisible 15-20% markup that vanishes into:
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "Rounding errors",
-                    "Bloated material lists",
-                    "'Unforeseen' expenses",
-                    "Ghost workers",
-                  ].map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 text-slate-200"
-                    >
-                      <XCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          <div className="grid md:grid-cols-2 gap-0 items-stretch max-w-5xl mx-auto">
+            {/* Left: System Failure Card */}
+            <motion.div {...fadeInUp} className="h-full">
+              <div className="h-full bg-slate-900 border border-slate-800 relative overflow-hidden">
+                <div className="flex items-center gap-2 px-6 py-3 bg-slate-800/80 border-b border-slate-700">
+                  <div className="h-2.5 w-2.5 rounded-full bg-red-500 animate-pulse" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-orange-500" />
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-600" />
+                  <span className="ml-3 font-mono text-[10px] text-slate-500 tracking-widest uppercase">
+                    SYSTEM_ALERT / INTEGRITY_FAILURE
+                  </span>
+                </div>
+                <div className="p-8">
+                  <AlertTriangle className="absolute top-12 right-4 w-32 h-32 text-orange-950/20 pointer-events-none" />
+                  <h3 className="relative z-10 text-xl font-bold text-white mb-2 flex items-center gap-3 font-mono">
+                    <AlertTriangle className="w-5 h-5 text-orange-500" />
+                    <span className="text-orange-500">ERR:</span>{" "}
+                    TRANSPARENCY_NOT_FOUND
+                  </h3>
+                  <div className="h-px bg-slate-800 my-4" />
+                  <p className="text-slate-300 mb-6">
+                    In Kenya, construction isn't just about cement and steel;
+                    it’s about the <strong>"Kenyan Construction Tax."</strong>{" "}
+                    It’s that invisible 15-20% markup that vanishes into:
+                  </p>
+                  <ul className="space-y-4">
+                    {[
+                      "Rounding errors",
+                      "Bloated material lists",
+                      "'Unforeseen' expenses",
+                      "Ghost workers",
+                    ].map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-center gap-3 text-slate-200"
+                      >
+                        <XCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </motion.div>
 

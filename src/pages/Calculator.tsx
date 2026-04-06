@@ -38,7 +38,68 @@ interface Message {
   showEstimateButton?: boolean;
   estimateData?: any;
   emailStatus?: "idle" | "sending" | "sent" | "error";
+  requestLeadInfo?: boolean;
 }
+
+const LeadCaptureForm = ({
+  onSubmit,
+}: {
+  onSubmit: (name: string, email: string) => void;
+}) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name.trim() && email.trim()) {
+      onSubmit(name, email);
+    }
+  };
+
+  return (
+    <Card className="mt-4 border border-orange-200 bg-orange-50/50 shadow-sm backdrop-blur-sm">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-lg text-slate-800 flex items-center gap-2">
+          <Mail className="h-5 w-5 text-orange-500" />
+          Where should I send your PDF?
+        </CardTitle>
+        <CardDescription>
+          Enter your details to receive your official construction estimate and
+          project breakdown immediately.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="space-y-1">
+            <Input
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="bg-white"
+            />
+          </div>
+          <div className="space-y-1">
+            <Input
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-white"
+            />
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-orange-500 hover:bg-orange-600"
+          >
+            Send My Free PDF
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+};
 
 // Helper component to format the AI response nicely
 const FormattedMessage = ({ content }: { content: string }) => {
@@ -110,18 +171,16 @@ const FormattedMessage = ({ content }: { content: string }) => {
 
 const Calculator = () => {
   const [prompt, setPrompt] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [sessionId] = useState(() => crypto.randomUUID());
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
-  const [sessionStarted, setSessionStarted] = useState(false);
   const { toast } = useToast();
 
   const handleGenerateEstimate = async (estimateData: any, index: number) => {
     setMessages((prev) =>
       prev.map((msg, i) =>
-        i === index ? { ...msg, emailStatus: "sending" } : msg
-      )
+        i === index ? { ...msg, emailStatus: "sending" } : msg,
+      ),
     );
 
     try {
@@ -130,7 +189,7 @@ const Calculator = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
+          session_id: sessionId,
           estimate_data: estimateData,
         }),
       });
@@ -139,18 +198,18 @@ const Calculator = () => {
 
       setMessages((prev) =>
         prev.map((msg, i) =>
-          i === index ? { ...msg, emailStatus: "sent" } : msg
-        )
+          i === index ? { ...msg, emailStatus: "sent" } : msg,
+        ),
       );
       toast({
         title: "Report Sent!",
-        description: `The estimate has been emailed to ${email}`,
+        description: `The estimate has been emailed directly to you`,
       });
     } catch (e) {
       setMessages((prev) =>
         prev.map((msg, i) =>
-          i === index ? { ...msg, emailStatus: "error" } : msg
-        )
+          i === index ? { ...msg, emailStatus: "error" } : msg,
+        ),
       );
       toast({
         title: "Error",
@@ -160,30 +219,21 @@ const Calculator = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent, customPrompt?: string) => {
+    e?.preventDefault();
 
-    if (!prompt.trim()) {
-      return;
-    }
-
-    if (!sessionStarted && (!email.trim() || !name.trim())) {
-      toast({
-        title: "Details Required",
-        description:
-          "Please provide your name and email to start the consultation.",
-        variant: "destructive",
-      });
+    const finalPrompt = customPrompt || prompt;
+    if (!finalPrompt.trim()) {
       return;
     }
 
     const userMessage: Message = {
       role: "user",
-      content: prompt,
+      content: finalPrompt,
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, userMessage]);
-    setPrompt("");
+    if (!customPrompt) setPrompt("");
     setLoading(true);
 
     try {
@@ -195,8 +245,7 @@ const Calculator = () => {
         },
         body: JSON.stringify({
           user_input: userMessage.content,
-          email: email,
-          name: name,
+          session_id: sessionId,
         }),
       });
 
@@ -218,10 +267,28 @@ const Calculator = () => {
         timestamp: new Date(),
         showEstimateButton: data.show_estimate_button,
         estimateData: data.estimate_data,
+        requestLeadInfo: data.request_lead_info,
         emailStatus: "idle",
       };
-      setMessages((prev) => [...prev, assistantMessage]);
-      setSessionStarted(true);
+
+      setMessages((prev) => {
+        const nextMessages = [...prev, assistantMessage];
+
+        // Auto-send logic if estimate is available
+        if (
+          assistantMessage.showEstimateButton &&
+          assistantMessage.estimateData
+        ) {
+          setTimeout(() => {
+            handleGenerateEstimate(
+              assistantMessage.estimateData,
+              nextMessages.length - 1,
+            );
+          }, 500);
+        }
+
+        return nextMessages;
+      });
 
       if (
         data.html_report ||
@@ -278,24 +345,6 @@ const Calculator = () => {
               <span className="animate-pulse text-orange-500">●</span>
               Consultation Room
             </CardTitle>
-            {!sessionStarted && (
-              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-                <Input
-                  type="text"
-                  placeholder="Enter your name..."
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-400"
-                />
-                <Input
-                  type="email"
-                  placeholder="Enter your email to start..."
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-slate-800 border-slate-700 text-white placeholder:text-slate-400"
-                />
-              </div>
-            )}
           </CardHeader>
 
           <CardContent className="flex-1 p-0 overflow-hidden flex flex-col">
@@ -330,40 +379,38 @@ const Calculator = () => {
                     )}
                     {msg.role === "assistant" && (
                       <div className="mt-2 flex flex-col gap-2 items-start">
+                        {msg.requestLeadInfo && idx === messages.length - 1 && (
+                          <LeadCaptureForm
+                            onSubmit={(name, email) => {
+                              // Send this automatically to the chat as a system/silent update or a direct user message
+                              handleSubmit(
+                                undefined,
+                                `My name is ${name} and my email is ${email}. Please send the PDF.`,
+                              );
+                            }}
+                          />
+                        )}
                         {msg.showEstimateButton && (
-                          <Button
-                            size="sm"
-                            onClick={() =>
-                              handleGenerateEstimate(msg.estimateData, idx)
-                            }
-                            disabled={
-                              msg.emailStatus === "sending" ||
-                              msg.emailStatus === "sent"
-                            }
-                            className={`gap-2 transition-all duration-300 ${
-                              msg.emailStatus === "sent"
-                                ? "bg-green-600 hover:bg-green-700 text-white"
-                                : "bg-orange-500 hover:bg-orange-600 text-white"
-                            }`}
-                          >
+                          <div className="flex items-center gap-2 mt-4 p-3 bg-orange-50/50 border border-orange-100 rounded-md text-orange-800 text-sm font-medium">
                             {msg.emailStatus === "sending" ? (
                               <>
-                                <Loader2 className="h-4 w-4 animate-spin" />
-                                Sending Report...
+                                <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                                ⏳ Sending official report...
                               </>
                             ) : msg.emailStatus === "sent" ? (
                               <>
-                                <Check className="h-4 w-4" />✅ Sent to Email
+                                <Check className="h-4 w-4 text-green-500" />✅
+                                Official report sent!
                               </>
                             ) : (
                               <>
-                                <Mail className="h-4 w-4" />
-                                Email Me Official Report
+                                <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                                ⏳ Preparing your report...
                               </>
                             )}
-                          </Button>
+                          </div>
                         )}
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 mt-2">
                           <Button
                             variant="ghost"
                             size="icon"
