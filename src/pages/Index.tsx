@@ -1,7 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import { HeroSection21Dev } from "@/components/ui/hero-section-21dev";
 import HomeGallerySection from "@/components/HomeGallerySection";
-import ProjectShowcaseSection from "@/components/ProjectShowcaseSection";
 import StorySection from "@/components/StorySection";
 import ProcessSection from "@/components/ProcessSection";
 import GuaranteeSection from "@/components/GuaranteeSection";
@@ -16,7 +15,6 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <HeroSection21Dev />
       <HomeGallerySection />
-      <ProjectShowcaseSection />
       <StorySection />
       <ProcessSection />
       <GuaranteeSection />

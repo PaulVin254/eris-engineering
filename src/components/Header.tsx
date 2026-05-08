@@ -6,8 +6,6 @@ import { cn } from "@/lib/utils";
 const menuItems = [
   { name: "Home", href: "/" },
   { name: "Concepts", href: "/concepts" },
-  { name: "Projects", href: "/projects" },
-  { name: "About", href: "/about" },
   { name: "Our Process", href: "/process" },
   { name: "Contact", href: "/contact" },
 ];
