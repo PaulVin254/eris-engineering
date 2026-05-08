@@ -32,7 +32,7 @@ const Header = () => {
           className={cn(
             "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
-              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5 mt-4 shadow-lg"
+              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5 mt-4 shadow-lg",
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -48,7 +48,7 @@ const Header = () => {
                   alt="Eris Engineering"
                   className={cn(
                     "w-auto transition-all duration-300",
-                    isScrolled ? "h-10 sm:h-12" : "h-12 sm:h-14"
+                    isScrolled ? "h-10 sm:h-12" : "h-12 sm:h-14",
                   )}
                 />
               </a>
@@ -98,7 +98,7 @@ const Header = () => {
                 <div
                   className={cn(
                     "flex items-center text-sm text-muted-foreground whitespace-nowrap transition-all duration-300",
-                    isScrolled && "lg:hidden"
+                    isScrolled && "lg:hidden",
                   )}
                 >
                   <span>+254 717 297 022</span>
