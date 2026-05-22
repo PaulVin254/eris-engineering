@@ -332,31 +332,47 @@ function ErisFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-center md:flex-row">
-          <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} Eris Engineering Ltd. All rights
-            reserved.
+        <div className="mt-8 flex flex-col items-center gap-4 border-t border-white/20 pt-6 text-center">
+          <p className="text-sm text-white/80">
+            Corporate Portfolio &amp; Ventures: Eris Engineering proudly owns
+            and operates its flagship community impact initiative, Ephphatha
+            Sign Language School (
+            <a
+              href="https://ephphathakenya.co.ke"
+              className="text-primary hover:underline hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ephphathakenya.co.ke
+            </a>
+            ).
           </p>
-          <nav className="flex gap-4 text-sm">
-            <a
-              href="#privacy"
-              className="transition-colors hover:text-primary text-white/60"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#terms"
-              className="transition-colors hover:text-primary text-white/60"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#cookies"
-              className="transition-colors hover:text-primary text-white/60"
-            >
-              Cookie Policy
-            </a>
-          </nav>
+          <div className="flex w-full flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-sm text-white/60">
+              © {new Date().getFullYear()} Eris Engineering Ltd. All rights
+              reserved.
+            </p>
+            <nav className="flex gap-4 text-sm">
+              <a
+                href="#privacy"
+                className="transition-colors hover:text-primary text-white/60"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#terms"
+                className="transition-colors hover:text-primary text-white/60"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#cookies"
+                className="transition-colors hover:text-primary text-white/60"
+              >
+                Cookie Policy
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>
