@@ -354,22 +354,22 @@ function ErisFooter() {
             </p>
             <nav className="flex gap-4 text-sm">
               <a
-                href="#privacy"
+                href="/privacy"
                 className="transition-colors hover:text-primary text-white/60"
               >
                 Privacy Policy
               </a>
               <a
-                href="#terms"
+                href="/terms"
                 className="transition-colors hover:text-primary text-white/60"
               >
                 Terms of Service
               </a>
               <a
-                href="#cookies"
+                href="/data-deletion"
                 className="transition-colors hover:text-primary text-white/60"
               >
-                Cookie Policy
+                Data Deletion
               </a>
             </nav>
           </div>
