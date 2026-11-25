@@ -1,26 +1,24 @@
-import HeroSection from "@/components/HeroSection";
-import { HeroSection21Dev } from "@/components/ui/hero-section-21dev";
-import HomeGallerySection from "@/components/HomeGallerySection";
-import StorySection from "@/components/StorySection";
-import ProcessSection from "@/components/ProcessSection";
-import GuaranteeSection from "@/components/GuaranteeSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import TestimonialsSection21Dev from "@/components/TestimonialsSection21Dev";
-import HomeCostCalculator from "@/components/HomeCostCalculator";
-import LeadMagnetSection from "@/components/LeadMagnetSection";
+import Header from "@/components/Header";
+import HeroMonograph from "@/components/HeroMonograph";
+import ArchitecturalBento from "@/components/ArchitecturalBento";
+import SelectedResidences from "@/components/SelectedResidences";
+import SignatureSeriesSection from "@/components/SignatureSeriesSection";
+import ClientPerspectives from "@/components/ClientPerspectives";
+import PrivateInquirySection from "@/components/PrivateInquirySection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      <HeroSection21Dev />
-      <HomeGallerySection />
-      <StorySection />
-      <ProcessSection />
-      <GuaranteeSection />
-      <TestimonialsSection21Dev />
-      <HomeCostCalculator />
-      <LeadMagnetSection />
+    <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <Header />
+      <main>
+        <HeroMonograph />
+        <ArchitecturalBento />
+        <SelectedResidences />
+        <SignatureSeriesSection />
+        <ClientPerspectives />
+        <PrivateInquirySection />
+      </main>
       <Footer />
     </div>
   );

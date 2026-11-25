@@ -56,6 +56,23 @@ export default {
 					blue: 'hsl(var(--trust-blue))',
 					green: 'hsl(var(--trust-green))'
 				},
+				gerding: {
+					orange: '#1B3B2B',
+					orangeHover: '#142C20',
+					dark: '#121413',
+					darkCard: '#181A19',
+					surface: '#F1F2F0'
+				},
+				studio: {
+					canvas: '#FAFAFA',
+					mist: '#F1F2F0',
+					paper: '#FFFFFF',
+					ink: '#121413',
+					graphite: '#525855',
+					hairline: '#E2E5E2',
+					forest: '#1B3B2B',
+					forestHover: '#142C20'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -91,7 +108,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				'sans': ['Hanken Grotesk', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'sans': ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',

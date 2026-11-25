@@ -1,251 +1,97 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Home, Bed, Maximize, Building2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-interface Project {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  bedrooms: number;
-  area: number;
-  roofType: string;
-  description: string;
-  isComingSoon?: boolean;
-}
-
-const projects: Project[] = [
-  {
-    id: "5",
-    title: "The Teak Geometric",
-    slug: "/projects/teak-geometric",
-    image: "/teak-hero.jpg",
-    bedrooms: 4,
-    area: 400,
-    roofType: "Flat Roof",
-    description:
-      "Textural Modernist Villa. Warm earth tones and floating volumes.",
-    isComingSoon: false,
-  },
-  {
-    id: "2",
-    title: "The Quartz Linear",
-    slug: "/projects/quartz-linear",
-    image: "/quartz-exterior.jpg",
-    bedrooms: 4,
-    area: 380,
-    roofType: "Flat Roof",
-    description:
-      "The Urban Sanctuary. Private walled courtyard design for high-value plots.",
-    isComingSoon: false,
-  },
-  {
-    id: "3",
-    title: "The Cedar Horizon",
-    slug: "/projects/cedar-horizon",
-    image: "/cedar-hero.jpg",
-    bedrooms: 4,
-    area: 420,
-    roofType: "Flat Roof",
-    description:
-      "Organic Modern Retreat. Dissolve the walls between you and nature.",
-    isComingSoon: false,
-  },
-  {
-    id: "4",
-    title: "The Bronze Vertical",
-    slug: "/projects/bronze-vertical",
-    image: "/bronze-hero.jpg",
-    bedrooms: 4,
-    area: 450,
-    roofType: "Flat Roof",
-    description: "High-Density Urban Luxury. Maximize your urban footprint.",
-    isComingSoon: false,
-  },
-  {
-    id: "1",
-    title: "The Onyx Villa",
-    slug: "/projects/onyx-villa",
-    image: "/onyx-exterior.jpg",
-    bedrooms: 4,
-    area: 350,
-    roofType: "Flat Roof",
-    description: "A modern masterpiece optimized for narrow plots.",
-    isComingSoon: false,
-  },
-  {
-    id: "6",
-    title: "The Mombasa Coastal Retreat",
-    slug: "",
-    image: "/placeholder.svg",
-    bedrooms: 4,
-    area: 320,
-    roofType: "Flat Roof",
-    description: "Breezy coastal design with large verandas.",
-    isComingSoon: true,
-  },
-  {
-    id: "5",
-    title: "The Kilimani Penthouse",
-    slug: "",
-    image: "/placeholder.svg",
-    bedrooms: 2,
-    area: 180,
-    roofType: "Flat Roof",
-    description: "Urban sophistication for the modern professional.",
-    isComingSoon: true,
-  },
-  {
-    id: "6",
-    title: "The Runda Estate Manor",
-    slug: "",
-    image: "/placeholder.svg",
-    bedrooms: 6,
-    area: 550,
-    roofType: "Gable Roof",
-    description: "Grand estate living with multi-generational spaces.",
-    isComingSoon: true,
-  },
-];
+import PrivateInquirySection from "@/components/PrivateInquirySection";
+import { SIGNATURE_RESIDENCES } from "@/data/signatureResidences";
 
 const ConceptsGallery = () => {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
       <Header />
 
-      {/* Hero Section */}
-      <section className="bg-slate-900 text-white py-20 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge className="mb-4 bg-orange-600 text-white text-sm px-4 py-1 hover:bg-orange-700 border-none">
-              Pre-Engineered Designs
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Engineering-Vetted Designs.
-              <br />
-              <span className="text-orange-500">Ready for Construction.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Why spend 6 months on architectural drawings? Choose a
-              pre-engineered concept and break ground in 30 days.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
+      <main className="pt-28 md:pt-36">
+        {/* Stacked Editorial Header */}
+        <section className="pb-16">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] leading-[1.06] text-[#121413]">
+                Signature architectural series.
+              </h1>
+              <p className="mt-5 text-base sm:text-lg text-[#525855] font-light leading-relaxed max-w-2xl">
+                Five construction-ready private residences engineered for Kenyan
+                soil conditions, complete with structural calculations and
+                itemized Bills of Quantities.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* 2-Column Architectural Plate Grid */}
+        <section className="pb-12">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {SIGNATURE_RESIDENCES.map((residence) => (
+                <article
+                  key={residence.slug}
+                  className="bg-white border border-[#E2E5E2] rounded-xl overflow-hidden flex flex-col justify-between group"
+                >
+                  <div>
+                    <Link
+                      to={`/projects/${residence.slug}`}
+                      className="block aspect-[16/10] bg-[#F1F2F0] overflow-hidden"
+                    >
+                      <img
+                        src={residence.heroImage}
+                        alt={residence.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </Link>
+
+                    <div className="p-7 sm:p-8">
+                      <div className="flex items-baseline justify-between gap-4">
+                        <h2 className="text-2xl font-normal tracking-tight text-[#121413]">
+                          {residence.title}
+                        </h2>
+                        <span className="font-mono text-xs text-[#525855] shrink-0">
+                          {residence.areaSqm}
+                        </span>
+                      </div>
+
+                      <p className="mt-1 text-xs uppercase tracking-wider text-[#1B3B2B] font-medium">
+                        {residence.subtitle}, {residence.bedrooms} Bedrooms
+                      </p>
+
+                      <p className="mt-4 text-sm sm:text-base text-[#525855] font-light leading-relaxed">
+                        {residence.architecturalThesis}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="px-7 sm:px-8 pb-7 pt-4 border-t border-[#E2E5E2] flex items-center justify-between gap-4">
+                    <span className="font-mono text-xs text-[#525855]">
+                      {residence.estimateRange}
+                    </span>
+
+                    <Link
+                      to={`/projects/${residence.slug}`}
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
+                    >
+                      <span>View Residence</span>
+                      <ArrowUpRight size={15} weight="regular" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <PrivateInquirySection />
+      </main>
 
       <Footer />
     </div>
-  );
-};
-
-const ProjectCard = ({ project }: { project: Project }) => {
-  const cardContent = (
-    <div
-      className={`bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col ${
-        !project.isComingSoon
-          ? "hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
-          : "opacity-90"
-      }`}
-    >
-      {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-slate-200">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-        />
-        <Badge className="absolute top-4 right-4 bg-orange-600 text-white shadow-lg border-none">
-          Engineered & Vetted
-        </Badge>
-        {project.isComingSoon && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
-            <Badge className="bg-white text-slate-900 text-lg px-6 py-2 font-bold border-none">
-              Launching Next Week
-            </Badge>
-          </div>
-        )}
-      </div>
-
-      {/* Card Content */}
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-2xl font-bold text-slate-900 mb-3">
-          {project.title}
-        </h3>
-
-        {/* Specs Row */}
-        <div className="flex items-center gap-4 mb-4 text-slate-600">
-          <div className="flex items-center gap-1.5">
-            <Bed className="w-4 h-4" />
-            <span className="text-sm font-medium">{project.bedrooms} Bed</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Maximize className="w-4 h-4" />
-            <span className="text-sm font-medium">{project.area} SQM</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Building2 className="w-4 h-4" />
-            <span className="text-sm font-medium">{project.roofType}</span>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p className="text-slate-600 mb-6 leading-relaxed flex-1">
-          {project.description}
-        </p>
-
-        {/* Button */}
-        {!project.isComingSoon ? (
-          <Button
-            variant="outline"
-            className="w-full border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white font-semibold transition-all"
-          >
-            View Design & Cost
-          </Button>
-        ) : (
-          <Button
-            variant="outline"
-            className="w-full border-2 border-slate-300 text-slate-400 cursor-not-allowed bg-slate-50"
-            disabled
-          >
-            Coming Soon
-          </Button>
-        )}
-      </div>
-    </div>
-  );
-
-  return project.isComingSoon ? (
-    <div>{cardContent}</div>
-  ) : (
-    <Link to={project.slug} className="block h-full">
-      {cardContent}
-    </Link>
   );
 };
 

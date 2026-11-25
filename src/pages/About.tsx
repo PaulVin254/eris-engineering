@@ -1,159 +1,118 @@
-import { motion } from "framer-motion";
-import {
-  ShieldAlert,
-  Search,
-  Clock,
-  Ruler,
-  Users,
-  ArrowRight,
-  CheckCircle2,
-  XCircle,
-} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import PrivateInquirySection from "@/components/PrivateInquirySection";
+
+const TENETS = [
+  {
+    index: "01",
+    title: "Fixed-Sum Certainty",
+    description:
+      "Every structural member, concrete grade, and finishing material is priced inside an itemized Bill of Quantities prior to site mobilization.",
+  },
+  {
+    index: "02",
+    title: "Direct Principal Supervision",
+    description:
+      "Projects are managed directly by founding civil and structural engineers rather than delegated to unvetted intermediaries.",
+  },
+  {
+    index: "03",
+    title: "Documented Execution",
+    description:
+      "Weekly high-definition site inspections, material delivery records, and milestone certificates provide an unbroken engineering record.",
+  },
+];
+
+const PARTNERS = [
+  {
+    name: "Eng. Paul Wakoli",
+    role: "Founding Principal and Civil Engineer",
+    photo: "/engineer-paul-headshot.png",
+  },
+  {
+    name: "Eng. Brian Kibet",
+    role: "Co-Founder and Structural Engineer",
+    photo: "/engineer-kibet-photo.png",
+  },
+  {
+    name: "Eng. Annelise Nyanga",
+    role: "Co-Founder and Project Engineer",
+    photo: "/engineer-annelise-photo.png",
+  },
+  {
+    name: "Peter Macharia",
+    role: "Co-Founder and Project Finance",
+    photo: "/peter-photo.png",
+  },
+];
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
       <Header />
 
-      <main className="pt-24 pb-16">
-        {/* Hero Section: The Elephant in the Room */}
-        <section className="container mx-auto px-4 mb-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
-            >
-              <Badge variant="destructive" className="mb-4 px-4 py-1 text-sm">
-                The Hard Truth
-              </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-tight">
-                The "Kenyan Construction" Story You're Afraid Of... <br />
-                <span className="text-red-600">Is True.</span>
+      <main className="pt-28 md:pt-36">
+        {/* Practice Header */}
+        <section className="pb-16 md:pb-20">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-[-0.03em] leading-[1.06] text-[#121413]">
+                Structural engineers building enduring private architecture.
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">
-                Stolen materials. Ghosted calls. Budgets that double overnight.
-                We didn't just build a construction company. We built an
-                antidote to the chaos.
+              <p className="mt-5 text-base sm:text-lg text-[#525855] font-light leading-relaxed max-w-2xl">
+                Eris Engineering Ltd was established in Kenya to give private
+                clients and diaspora families institutional construction
+                governance from initial soil study through final handover.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button
-                  size="lg"
-                  className="bg-orange-500 hover:bg-orange-600 text-white text-lg h-14 px-8"
-                >
-                  See How We Fix It <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="grid grid-cols-2 gap-4">
-                <Card className="bg-red-50 border-red-100">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center">
-                      <XCircle className="w-6 h-6 text-red-600" />
-                    </div>
-                    <h3 className="font-bold text-red-900">The Old Way</h3>
-                    <ul className="space-y-2 text-sm text-red-800">
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                        "Fundi" disappears with deposit
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                        Materials "vanish" from site
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
-                        Timeline: "God willing"
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-                <Card className="bg-green-50 border-green-100 mt-12">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6 text-green-600" />
-                    </div>
-                    <h3 className="font-bold text-green-900">The Eris Way</h3>
-                    <ul className="space-y-2 text-sm text-green-800">
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        Milestone-based payments
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        Daily video logs
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-                        Timeline: Contractually binding
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Origin Story */}
-        <section className="bg-muted/30 py-24 border-y border-border/50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center space-y-8">
-              <Badge
-                variant="outline"
-                className="border-blue-500 text-blue-600 bg-blue-50"
-              >
-                The Origin Story
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Why We Declared War on "Trust"
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-left">
-                <p>
-                  "I saw it happen to my own family. My uncle in London sent
-                  millions home for a retirement villa. For two years, he got
-                  photos of 'progress'. When he finally flew back, he found a
-                  half-built shell in a swamp. The money was gone. The 'foreman'
-                  was his cousin."
-                </p>
-                <p>It made me sick. Not just the theft, but the betrayal.</p>
-                <p className="font-medium text-foreground">
-                  So I built Eris Engineering with a simple, radical philosophy:{" "}
-                  <br />
-                  <span className="text-orange-500 font-bold">
-                    Remove "Trust" from the equation. Replace it with "Proof".
-                  </span>
-                </p>
-                <p>
-                  We don't ask you to trust us. We force ourselves to prove it.
-                  Every single day.
-                </p>
+        {/* Founding Narrative */}
+        <section className="py-20 md:py-28 bg-white border-y border-[#E2E5E2]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-5">
+                <div className="aspect-[4/5] rounded-xl overflow-hidden bg-[#F1F2F0] max-w-md">
+                  <img
+                    src="/paul-wakoli.jpg"
+                    alt="Eng. Paul Wakoli, Founding Principal at Eris Engineering"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <div className="pt-8">
-                <div className="flex items-center justify-center gap-4">
-                  <Avatar className="h-16 w-16 border-2 border-orange-500">
-                    <AvatarImage src="/paul-wakoli.jpg" />
-                    <AvatarFallback>PW</AvatarFallback>
-                  </Avatar>
-                  <div className="text-left">
-                    <p className="font-bold text-lg">Paul Wakoli</p>
-                    <p className="text-sm text-muted-foreground">
-                      Founder & Civil Engineer
-                    </p>
+
+              <div className="lg:col-span-7 space-y-6 max-w-2xl">
+                <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.025em] leading-[1.12] text-[#121413]">
+                  Replacing blind trust with verifiable engineering proof.
+                </h2>
+
+                <p className="text-base sm:text-lg text-[#525855] font-light leading-relaxed">
+                  Across Kenya, private residential construction too often fails
+                  clients living abroad. Unverified estimates, informal site
+                  supervision, and unrecorded cash disbursements turn long-term
+                  investments into stalled structures.
+                </p>
+
+                <p className="text-base sm:text-lg text-[#525855] font-light leading-relaxed">
+                  Having witnessed close family lose capital to unmonitored
+                  building projects, our founding partners structured Eris
+                  Engineering around a single standard: remove ambiguity from
+                  every phase of construction.
+                </p>
+
+                <p className="text-base sm:text-lg text-[#121413] font-normal leading-relaxed">
+                  Every commission is governed by engineering calculations,
+                  milestone-gated capital releases, and weekly filmed
+                  inspections conducted on site by our principal engineers.
+                </p>
+
+                <div className="pt-4 border-t border-[#E2E5E2]">
+                  <div className="text-base font-medium text-[#121413]">
+                    Eng. Paul Wakoli
+                  </div>
+                  <div className="text-sm text-[#525855]">
+                    Founding Principal, Eris Engineering Ltd
                   </div>
                 </div>
               </div>
@@ -161,163 +120,74 @@ const About = () => {
           </div>
         </section>
 
-        {/* The Anti-Fundi Manifesto */}
-        <section className="container mx-auto px-4 py-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              The "Anti-Fundi" Manifesto
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We are not "builders". We are a paramilitary engineering unit.
-              Here are the 3 laws we live by.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Search className="w-8 h-8 text-blue-600" />,
-                title: "Radical Transparency",
-                desc: "We show you the receipts. Literally. You see exactly what materials cost. No markups hidden in 'miscellaneous' fees.",
-              },
-              {
-                icon: <Clock className="w-8 h-8 text-orange-600" />,
-                title: "Zero 'African Time'",
-                desc: "If we say Tuesday at 9:00 AM, we mean Tuesday at 9:00 AM. We treat deadlines as blood oaths, not suggestions.",
-              },
-              {
-                icon: <Ruler className="w-8 h-8 text-green-600" />,
-                title: "Engineering First",
-                desc: "We don't build on 'vibes'. We build on code. Every decision is backed by structural calculations and qualified engineers.",
-              },
-            ].map((item, i) => (
-              <Card
-                key={i}
-                className="border-2 hover:border-orange-500/50 transition-colors duration-300"
-              >
-                <CardContent className="p-8 space-y-4">
-                  <div className="bg-muted w-16 h-16 rounded-2xl flex items-center justify-center mb-4">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {item.desc}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* The Team */}
-        <section className="bg-slate-900 text-white py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <Badge className="bg-orange-500 hover:bg-orange-600 text-white border-none mb-4">
-                Competence Over Charisma
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Led By Engineers, Not Salesmen
+        {/* Three Studio Tenets */}
+        <section className="py-20 md:py-28 bg-[#FAFAFA]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="max-w-2xl mb-14">
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.025em] text-[#121413]">
+                Operating principles.
               </h2>
+              <p className="mt-4 text-base text-[#525855] font-light leading-relaxed">
+                Three structural commitments that govern every residential and
+                commercial commission we undertake.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Paul Wakoli",
-                  role: "Co-founder & engineer",
-                  bg: "bg-blue-500",
-                  photo: "/engineer-paul-headshot.png",
-                },
-                {
-                  name: "Brian Kibet",
-                  role: "Co-founder & engineer",
-                  bg: "bg-purple-500",
-                  photo: "/engineer-kibet-photo.png",
-                },
-                {
-                  name: "Annelise Nyanga",
-                  role: "Co-founder & engineer",
-                  bg: "bg-green-500",
-                  photo: "/engineer-annelise-photo.png",
-                },
-                {
-                  name: "Peter Macharia",
-                  role: "Co-founder & finance",
-                  bg: "bg-orange-500",
-                  photo: "/peter-photo.png",
-                },
-              ].map((member, i) => (
-                <div key={i} className="group relative">
-                  <div className="aspect-[3/4] bg-slate-800 rounded-xl overflow-hidden relative mb-4">
-                    {member.photo ? (
-                      <img
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <>
-                        <div
-                          className={`absolute inset-0 ${member.bg} opacity-20 group-hover:opacity-30 transition-opacity`}
-                        ></div>
-                        <div className="absolute inset-0 flex items-center justify-center text-slate-600">
-                          <Users className="w-16 h-16 opacity-50" />
-                        </div>
-                      </>
-                    )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {TENETS.map((tenet) => (
+                <div
+                  key={tenet.index}
+                  className="bg-[#F1F2F0] rounded-xl p-8 space-y-4"
+                >
+                  <div className="font-mono text-xs text-[#1B3B2B]">
+                    {tenet.index}
                   </div>
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-slate-400">{member.role}</p>
+                  <h3 className="text-xl font-medium tracking-tight text-[#121413]">
+                    {tenet.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-[#525855] font-light leading-relaxed">
+                    {tenet.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Skin in the Game */}
-        <section className="container mx-auto px-4 py-24">
-          <div className="bg-orange-50 border border-orange-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-            <div className="bg-orange-100 p-4 rounded-full shrink-0">
-              <ShieldAlert className="w-12 h-12 text-orange-600" />
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">
-                The "Skin In The Game" Guarantee
-              </h3>
-              <p className="text-muted-foreground text-lg">
-                We don't just promise updates. We penalize ourselves.
-                <span className="font-bold text-foreground">
-                  {" "}
-                  If you don't get your Friday Video Update by 5 PM, we credit
-                  your account KES 5,000.
-                </span>
-                No questions asked.
+        {/* Founding Partners Grid */}
+        <section className="py-20 md:py-28 bg-white border-t border-[#E2E5E2]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div className="max-w-2xl mb-14">
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-[-0.025em] text-[#121413]">
+                Leadership and engineering team.
+              </h2>
+              <p className="mt-4 text-base text-[#525855] font-light leading-relaxed">
+                Multidisciplinary civil engineers and financial governance
+                principals overseeing every active site.
               </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {PARTNERS.map((member) => (
+                <div key={member.name} className="group">
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden bg-[#F1F2F0] border border-[#E2E5E2] mb-4">
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <h3 className="text-lg font-medium tracking-tight text-[#121413]">
+                    {member.name}
+                  </h3>
+                  <p className="text-sm text-[#525855] mt-1">{member.role}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="container mx-auto px-4 mb-12">
-          <div className="bg-foreground text-background rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
-            <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-              <h2 className="text-3xl md:text-5xl font-bold">
-                Enough Stories. Let's Talk Facts.
-              </h2>
-              <p className="text-lg md:text-xl text-gray-300">
-                You have a vision. We have the engineering discipline to build
-                it. Let's see if we're a match.
-              </p>
-              <Button
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-orange-500/20"
-              >
-                Book Your Free Strategy Session
-              </Button>
-            </div>
-          </div>
-        </section>
+        <PrivateInquirySection />
       </main>
 
       <Footer />

@@ -1,120 +1,168 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useScroll, useMotionValueEvent, AnimatePresence, motion } from "framer-motion";
+import { List, X, ArrowUpRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-const menuItems = [
-  { name: "Home", href: "/" },
-  { name: "Concepts", href: "/concepts" },
-  { name: "Our Process", href: "/process" },
-  { name: "Contact", href: "/contact" },
+const NAV_LINKS = [
+  { label: "Residences", to: "/projects" },
+  { label: "Signature Series", to: "/concepts" },
+  { label: "Approach", to: "/process" },
+  { label: "Practice", to: "/about" },
+];
+
+const DARK_HERO_ROUTES = [
+  "/",
+  "/projects/cedar-horizon",
+  "/projects/teak-geometric",
+  "/projects/quartz-linear",
+  "/projects/bronze-vertical",
+  "/projects/onyx-villa",
 ];
 
 const Header = () => {
-  const [menuState, setMenuState] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 40);
+  });
+
+  const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname);
+  const isOverDarkHero = hasDarkHero && !isScrolled && !menuOpen;
 
   return (
-    <header>
-      <nav
-        data-state={menuState && "active"}
-        className="fixed z-50 w-full px-2 group top-0"
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={cn(
+          "h-[72px] w-full transition-colors duration-300 flex items-center",
+          isOverDarkHero
+            ? "bg-transparent text-[#FAFAFA]"
+            : "bg-[#FAFAFA]/95 backdrop-blur-md border-b border-[#E2E5E2] text-[#121413]"
+        )}
       >
-        <div
-          className={cn(
-            "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
-            isScrolled &&
-              "bg-background/80 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5 mt-4 shadow-lg",
-          )}
-        >
-          <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
-            {/* Logo */}
-            <div className="flex w-full justify-between lg:w-auto">
-              <a
-                href="/"
-                aria-label="home"
-                className="flex items-center space-x-2"
-              >
-                <img
-                  src="/eris-engineering-logo.svg"
-                  alt="Eris Engineering"
-                  className={cn(
-                    "w-auto transition-all duration-300",
-                    isScrolled ? "h-10 sm:h-12" : "h-12 sm:h-14",
-                  )}
-                />
-              </a>
-              <button
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState ? "Close Menu" : "Open Menu"}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden"
-              >
-                <Menu className="in-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-              </button>
-            </div>
+        <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-10 flex items-center justify-between gap-6">
+          {/* Brand Logo */}
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Eris Engineering Home"
+            className="flex items-center shrink-0"
+          >
+            <img
+              src={
+                isOverDarkHero
+                  ? "/eris-engineering-logo-dark.svg"
+                  : "/eris-engineering-logo.svg"
+              }
+              alt="Eris Engineering"
+              className="h-9 sm:h-10 w-auto transition-opacity duration-300"
+            />
+          </Link>
 
-            {/* Desktop Menu */}
-            <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm font-medium">
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href={item.href}
-                      className="text-foreground/80 hover:text-primary block duration-150"
-                    >
-                      <span>{item.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* CTA & Mobile Menu Content */}
-            <div className="bg-background group-data-[state=active]:block lg:group-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-3 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-              <div className="lg:hidden">
-                <ul className="space-y-6 text-base">
-                  {menuItems.map((item, index) => (
-                    <li key={index}>
-                      <a
-                        href={item.href}
-                        className="text-foreground hover:text-primary block duration-150"
-                      >
-                        <span>{item.name}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit lg:flex-row lg:items-center">
-                <div
+          {/* Single-Line Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map((item) => {
+              const isActive = location.pathname === item.to;
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
                   className={cn(
-                    "flex items-center text-sm text-muted-foreground whitespace-nowrap transition-all duration-300",
-                    isScrolled && "lg:hidden",
+                    "text-sm font-normal tracking-[-0.01em] whitespace-nowrap transition-colors duration-200",
+                    isOverDarkHero
+                      ? isActive
+                        ? "text-[#FAFAFA]"
+                        : "text-[#FAFAFA]/80 hover:text-[#FAFAFA]"
+                      : isActive
+                        ? "text-[#1B3B2B] font-medium"
+                        : "text-[#525855] hover:text-[#121413]"
                   )}
                 >
-                  <span>+254 717 297 022</span>
-                </div>
-                <Button
-                  size="sm"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 whitespace-nowrap rounded-full px-6"
-                  onClick={() => (window.location.href = "/calculator")}
-                >
-                  <span>Get Free Estimate</span>
-                </Button>
-              </div>
-            </div>
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Primary Studio Action & Mobile Trigger */}
+          <div className="flex items-center gap-3 shrink-0">
+            <Link
+              to="/contact"
+              className={cn(
+                "hidden sm:inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors duration-200",
+                isOverDarkHero
+                  ? "bg-[#FAFAFA] text-[#121413] hover:bg-[#F1F2F0]"
+                  : "bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20]"
+              )}
+            >
+              <span>Private Inquiry</span>
+              <ArrowUpRight size={15} weight="regular" />
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className={cn(
+                "lg:hidden w-10 h-10 rounded-lg flex items-center justify-center border transition-colors",
+                isOverDarkHero
+                  ? "border-[#FAFAFA]/30 text-[#FAFAFA] hover:bg-[#FAFAFA]/10"
+                  : "border-[#E2E5E2] text-[#121413] hover:bg-[#F1F2F0]"
+              )}
+            >
+              {menuOpen ? (
+                <X size={18} weight="regular" />
+              ) : (
+                <List size={18} weight="regular" />
+              )}
+            </button>
           </div>
         </div>
-      </nav>
+      </div>
+
+      {/* Mobile Menu Sheet */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-[#FAFAFA] border-t border-[#E2E5E2] z-40 px-6 py-10 flex flex-col justify-between overflow-y-auto"
+          >
+            <nav className="flex flex-col divide-y divide-[#E2E5E2] border-y border-[#E2E5E2]">
+              {NAV_LINKS.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-5 flex items-center justify-between text-xl font-normal tracking-tight text-[#121413] hover:text-[#1B3B2B]"
+                >
+                  <span>{item.label}</span>
+                  <ArrowUpRight size={18} weight="light" className="text-[#525855]" />
+                </Link>
+              ))}
+            </nav>
+
+            <div className="pt-8 space-y-4">
+              <p className="text-sm text-[#525855]">
+                Nairobi and Western Kenya. Direct principal engineering oversight.
+              </p>
+              <Link
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-6 py-3.5 text-sm font-medium"
+              >
+                <span>Private Inquiry</span>
+                <ArrowUpRight size={16} weight="regular" />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
