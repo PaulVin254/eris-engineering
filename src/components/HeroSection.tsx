@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Shield, Eye, Users, Phone } from "lucide-react";
@@ -25,7 +27,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <DynamicHero navItems={navItems} imageUrl={heroImage}>
+    <DynamicHero navItems={navItems} imageUrl={typeof heroImage === "string" ? heroImage : heroImage.src}>
       {/* Custom content that replaces the default centered layout */}
       <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 mt-8">
         <div className="grid lg:grid-cols-3 gap-12 items-start">

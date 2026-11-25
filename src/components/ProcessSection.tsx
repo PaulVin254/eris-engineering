@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { CheckCircle, MessageSquare, Eye, Home } from "lucide-react";
 import { motion } from "framer-motion";
@@ -75,7 +77,7 @@ const ProcessSection = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Our transparent process eliminates the fear and uncertainty. Here's
-            exactly how we turn your dream into reality – safely.
+            exactly how we turn your dream into reality â€“ safely.
           </p>
         </motion.div>
 
@@ -231,7 +233,7 @@ const ProcessSection = () => {
               </h4>
               <p className="text-muted-foreground">
                 Daily WhatsApp updates keep you involved. Ask questions anytime
-                – we understand the diaspora experience.
+                â€“ we understand the diaspora experience.
               </p>
             </motion.div>
           </div>

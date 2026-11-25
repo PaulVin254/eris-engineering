@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, CheckCircle, ArrowRight } from "lucide-react";
@@ -74,7 +76,7 @@ const StorySection = () => {
                   <p>
                     "I sent KES 2.5 million to my brother to build our family
                     home in Kitengela. For months, he sent photos of 'progress'
-                    – foundation work, walls going up."
+                    â€“ foundation work, walls going up."
                   </p>
                   <p>
                     "When I finally visited Kenya, I discovered the foundation
@@ -192,7 +194,7 @@ const StorySection = () => {
                   </p>
                   <p className="font-semibold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                     "When I finally came home, my nyumba was exactly as promised
-                    – on time, on budget, and built to last."
+                    â€“ on time, on budget, and built to last."
                   </p>
                 </div>
               </div>

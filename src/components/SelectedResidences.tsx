@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -168,7 +168,7 @@ const SelectedResidences = () => {
 
               <div>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-6 py-3.5 text-sm font-medium transition-colors"
                 >
                   <span>Private Inquiry</span>

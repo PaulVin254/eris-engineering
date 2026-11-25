@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 
@@ -48,7 +48,7 @@ const HeroMonograph = () => {
 
           <div className="mt-8 flex flex-wrap items-center gap-3.5">
             <Link
-              to="/projects"
+              href="/projects"
               className="inline-flex items-center gap-2 rounded-lg bg-[#FAFAFA] text-[#121413] hover:bg-[#F1F2F0] px-6 py-3.5 text-sm font-medium transition-colors active:scale-[0.98]"
             >
               <span>Selected Work</span>
@@ -56,7 +56,7 @@ const HeroMonograph = () => {
             </Link>
 
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-lg border border-[#FAFAFA]/35 bg-[#121413]/30 backdrop-blur-sm text-[#FAFAFA] hover:bg-[#FAFAFA]/15 px-6 py-3.5 text-sm font-medium transition-colors active:scale-[0.98]"
             >
               <span>Private Inquiry</span>

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -94,7 +96,7 @@ const HomeCostCalculator = () => {
 
     const baseCost = houseSize * costPerSqm;
 
-    // Add variance for realistic range (±15%)
+    // Add variance for realistic range (Â±15%)
     const minCost = baseCost * 0.85;
     const maxCost = baseCost * 1.15;
 

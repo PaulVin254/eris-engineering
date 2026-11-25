@@ -1,0 +1,471 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Copy,
+  Check,
+  Paperclip,
+  Mic,
+  CornerDownLeft,
+  Loader2,
+  Mail,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { ChatMessageList } from "@/components/ui/chat-message-list";
+import {
+  ChatBubble,
+  ChatBubbleAvatar,
+  ChatBubbleMessage,
+} from "@/components/ui/chat-bubble";
+import { ChatInput } from "@/components/ui/chat-input";
+
+interface Message {
+  role: "user" | "assistant";
+  content: string;
+  timestamp: Date;
+  showEstimateButton?: boolean;
+  estimateData?: Record<string, unknown>;
+  emailStatus?: "idle" | "sending" | "sent" | "error";
+  requestLeadInfo?: boolean;
+}
+
+const LeadCaptureForm = ({
+  onSubmit,
+}: {
+  onSubmit: (name: string, email: string) => void;
+}) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name.trim() && email.trim()) {
+      onSubmit(name, email);
+    }
+  };
+
+  return (
+    <Card className="mt-4 border border-orange-200 bg-orange-50/50 shadow-sm backdrop-blur-sm">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-lg text-slate-800 flex items-center gap-2">
+          <Mail className="h-5 w-5 text-orange-500" />
+          Where should I send your PDF?
+        </CardTitle>
+        <CardDescription>
+          Enter your details to receive your official construction estimate and
+          project breakdown immediately.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="space-y-1">
+            <Input
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="bg-white"
+            />
+          </div>
+          <div className="space-y-1">
+            <Input
+              type="email"
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-white"
+            />
+          </div>
+          <Button
+            type="submit"
+            className="w-full bg-orange-500 hover:bg-orange-600"
+          >
+            Send My Free PDF
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+};
+
+// Helper component to format the AI response nicely
+const FormattedMessage = ({ content }: { content: string }) => {
+  let processedContent = content;
+  if (!content.includes("\n") && content.includes("* **")) {
+    processedContent = content.replace(/\* \*\*/g, "\n* **");
+  }
+
+  const parseBold = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={index} className="font-bold text-slate-900">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
+  const lines = processedContent.split("\n");
+
+  return (
+    <div className="space-y-1.5 text-sm leading-relaxed text-slate-700">
+      {lines.map((line, i) => {
+        const trimmed = line.trim();
+
+        if (!trimmed) return <div key={i} className="h-2" />;
+
+        if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+          return (
+            <div key={i} className="flex gap-2 ml-1">
+              <span className="text-orange-500 font-bold mt-0.5">•</span>
+              <span>{parseBold(trimmed.substring(2))}</span>
+            </div>
+          );
+        }
+
+        if (
+          trimmed.startsWith("#") ||
+          (trimmed.startsWith("**") &&
+            trimmed.endsWith("**") &&
+            trimmed.length < 60)
+        ) {
+          const text = trimmed.replace(/^#+\s*/, "");
+          return (
+            <h3
+              key={i}
+              className="font-bold text-slate-900 mt-3 mb-1 text-base"
+            >
+              {parseBold(text)}
+            </h3>
+          );
+        }
+
+        return <p key={i}>{parseBold(line)}</p>;
+      })}
+    </div>
+  );
+};
+
+export function CalculatorClient() {
+  const [prompt, setPrompt] = useState("");
+  const [sessionId] = useState(() =>
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : "session-" + Math.random().toString(36).slice(2)
+  );
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleGenerateEstimate = async (
+    estimateData: Record<string, unknown>,
+    index: number
+  ) => {
+    setMessages((prev) =>
+      prev.map((msg, i) =>
+        i === index ? { ...msg, emailStatus: "sending" } : msg
+      )
+    );
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+      const res = await fetch(`${apiUrl}/api/generate-estimate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          session_id: sessionId,
+          estimate_data: estimateData,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      setMessages((prev) =>
+        prev.map((msg, i) =>
+          i === index ? { ...msg, emailStatus: "sent" } : msg
+        )
+      );
+      toast({
+        title: "Report Sent!",
+        description: `The estimate has been emailed directly to you`,
+      });
+    } catch {
+      setMessages((prev) =>
+        prev.map((msg, i) =>
+          i === index ? { ...msg, emailStatus: "error" } : msg
+        )
+      );
+      toast({
+        title: "Error",
+        description: "Failed to send the email. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleSubmit = async (e?: React.FormEvent, customPrompt?: string) => {
+    e?.preventDefault();
+
+    const finalPrompt = customPrompt || prompt;
+    if (!finalPrompt.trim()) {
+      return;
+    }
+
+    const userMessage: Message = {
+      role: "user",
+      content: finalPrompt,
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    if (!customPrompt) setPrompt("");
+    setLoading(true);
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+      const res = await fetch(`${apiUrl}/api/consult-fundi`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_input: userMessage.content,
+          session_id: sessionId,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to get estimate");
+      }
+
+      const data = await res.json();
+
+      const fundiResponse =
+        data.fundi_response ||
+        data.response ||
+        data.result ||
+        JSON.stringify(data, null, 2);
+
+      const assistantMessage: Message = {
+        role: "assistant",
+        content: fundiResponse,
+        timestamp: new Date(),
+        showEstimateButton: data.show_estimate_button,
+        estimateData: data.estimate_data,
+        requestLeadInfo: data.request_lead_info,
+        emailStatus: "idle",
+      };
+
+      setMessages((prev) => {
+        const nextMessages = [...prev, assistantMessage];
+
+        if (
+          assistantMessage.showEstimateButton &&
+          assistantMessage.estimateData
+        ) {
+          setTimeout(() => {
+            handleGenerateEstimate(
+              assistantMessage.estimateData,
+              nextMessages.length - 1
+            );
+          }, 500);
+        }
+
+        return nextMessages;
+      });
+
+      if (
+        data.html_report ||
+        fundiResponse.toLowerCase().includes("total cost") ||
+        fundiResponse.toLowerCase().includes("breakdown")
+      ) {
+        toast({
+          title: "Estimate Ready!",
+          description: "Fundi has finished calculating your project costs.",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast({
+        title: "Connection Error",
+        description:
+          "Could not connect to Fundi. Is the backend server running?",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
+  return (
+    <main className="flex-1 pt-24 pb-8 px-4 container mx-auto max-w-4xl flex flex-col h-[calc(100vh-4rem)]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-6 space-y-2 flex-shrink-0"
+      >
+        <h1 className="text-3xl md:text-4xl font-bold text-slate-900">
+          Fundi: Construction Partner
+        </h1>
+        <p className="text-muted-foreground">
+          Real-time, AI-powered cost breakdown.
+        </p>
+      </motion.div>
+
+      <Card className="flex-1 flex flex-col border-2 border-slate-200 shadow-xl overflow-hidden bg-background">
+        <CardHeader className="bg-slate-900 text-white p-4 flex-shrink-0">
+          <CardTitle className="flex items-center gap-2 text-xl">
+            <span className="animate-pulse text-orange-500">●</span>
+            Consultation Room
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="flex-1 p-0 overflow-hidden flex flex-col">
+          <ChatMessageList className="flex-1 p-4">
+            {messages.length === 0 && (
+              <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground p-8 opacity-50">
+                <span className="text-6xl mb-4">👷🏾‍♂️</span>
+                <p>
+                  Tell me about your project. I can help with estimates,
+                  materials, and labor costs.
+                </p>
+              </div>
+            )}
+            {messages.map((msg, idx) => (
+              <ChatBubble
+                key={idx}
+                variant={msg.role === "user" ? "sent" : "received"}
+              >
+                <ChatBubbleAvatar
+                  fallback={msg.role === "user" ? "US" : "FU"}
+                  src={msg.role === "user" ? "" : "/engineer-paul-headshot.png"}
+                />
+                <ChatBubbleMessage
+                  variant={msg.role === "user" ? "sent" : "received"}
+                >
+                  {msg.role === "user" ? (
+                    msg.content
+                  ) : (
+                    <FormattedMessage content={msg.content} />
+                  )}
+                  {msg.role === "assistant" && (
+                    <div className="mt-2 flex flex-col gap-2 items-start">
+                      {msg.requestLeadInfo && idx === messages.length - 1 && (
+                        <LeadCaptureForm
+                          onSubmit={(name, email) => {
+                            handleSubmit(
+                              undefined,
+                              `My name is ${name} and my email is ${email}. Please send the PDF.`
+                            );
+                          }}
+                        />
+                      )}
+                      {msg.showEstimateButton && (
+                        <div className="flex items-center gap-2 mt-4 p-3 bg-orange-50/50 border border-orange-100 rounded-md text-orange-800 text-sm font-medium">
+                          {msg.emailStatus === "sending" ? (
+                            <>
+                              <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                              ⏳ Sending official report...
+                            </>
+                          ) : msg.emailStatus === "sent" ? (
+                            <>
+                              <Check className="h-4 w-4 text-green-500" />✅
+                              Official report sent!
+                            </>
+                          ) : (
+                            <>
+                              <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                              ⏳ Preparing your report...
+                            </>
+                          )}
+                        </div>
+                      )}
+                      <div className="flex gap-2 mt-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6"
+                          onClick={() => {
+                            navigator.clipboard.writeText(msg.content);
+                            toast({ title: "Copied" });
+                          }}
+                        >
+                          <Copy className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </ChatBubbleMessage>
+              </ChatBubble>
+            ))}
+            {loading && (
+              <ChatBubble variant="received">
+                <ChatBubbleAvatar
+                  fallback="FU"
+                  src="/engineer-paul-headshot.png"
+                />
+                <ChatBubbleMessage isLoading />
+              </ChatBubble>
+            )}
+          </ChatMessageList>
+
+          <div className="p-4 bg-background border-t">
+            <form
+              onSubmit={handleSubmit}
+              className="relative rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring p-1"
+            >
+              <ChatInput
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Type your message here..."
+                className="min-h-12 resize-none rounded-lg bg-background border-0 p-3 shadow-none focus-visible:ring-0"
+              />
+              <div className="flex items-center p-3 pt-0">
+                <Button variant="ghost" size="icon" type="button">
+                  <Paperclip className="size-4" />
+                  <span className="sr-only">Attach file</span>
+                </Button>
+                <Button variant="ghost" size="icon" type="button">
+                  <Mic className="size-4" />
+                  <span className="sr-only">Use Microphone</span>
+                </Button>
+                <Button
+                  type="submit"
+                  size="sm"
+                  className="ml-auto gap-1.5"
+                  disabled={loading || !prompt.trim()}
+                >
+                  Send Message
+                  <CornerDownLeft className="size-3.5" />
+                </Button>
+              </div>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
+    </main>
+  );
+}

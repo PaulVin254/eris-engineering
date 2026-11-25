@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -108,8 +109,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				'sans': ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				'mono': ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+				'sans': ['var(--font-sans)', 'Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				'mono': ['var(--font-mono)', 'JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,5 +118,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

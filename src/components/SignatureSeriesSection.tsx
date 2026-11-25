@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import { SIGNATURE_RESIDENCES } from "@/data/signatureResidences";
@@ -87,7 +87,7 @@ const SignatureSeriesSection = () => {
               </p>
 
               <Link
-                to={`/projects/${activeResidence.slug}`}
+                href={`/projects/${activeResidence.slug}`}
                 className="inline-flex items-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-5 py-3 text-sm font-medium shrink-0 self-start transition-colors"
               >
                 <span>View Residence</span>

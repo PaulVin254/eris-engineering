@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "@phosphor-icons/react";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 const WHATSAPP_URL =
   "https://wa.me/254717297022?text=Hello%20Eris%20Engineering%2C%20I%20would%20like%20to%20discuss%20a%20private%20residential%20commission%20in%20Kenya.";
@@ -21,7 +21,7 @@ const PrivateInquirySection = () => {
 
           <div className="flex flex-wrap items-center gap-3.5 shrink-0">
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-6 py-3.5 text-sm font-medium transition-colors"
             >
               <span>Private Inquiry</span>

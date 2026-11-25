@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "@phosphor-icons/react";
 
@@ -139,7 +139,7 @@ const ArchitecturalBento = () => {
 
             <div className="pt-8">
               <Link
-                to="/about"
+                href="/about"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
               >
                 <span>Practice Overview</span>

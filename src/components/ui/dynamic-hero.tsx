@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 
 // Helper to parse 'rgb(r, g, b)' or 'rgba(r, g, b, a)' string to {r, g, b}

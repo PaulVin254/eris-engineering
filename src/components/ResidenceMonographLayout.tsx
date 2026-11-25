@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft } from "@phosphor-icons/react";
 import Header from "@/components/Header";
@@ -61,14 +61,14 @@ const ResidenceMonographLayout = ({
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3.5">
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-lg bg-[#FAFAFA] text-[#121413] hover:bg-[#F1F2F0] px-6 py-3.5 text-sm font-medium transition-colors"
                 >
                   <span>Private Inquiry</span>
                   <ArrowUpRight size={15} weight="regular" />
                 </Link>
                 <Link
-                  to="/concepts"
+                  href="/concepts"
                   className="inline-flex items-center gap-2 rounded-lg border border-[#FAFAFA]/35 bg-[#121413]/30 backdrop-blur-sm text-[#FAFAFA] hover:bg-[#FAFAFA]/15 px-5 py-3.5 text-sm font-medium transition-colors"
                 >
                   <ArrowLeft size={15} weight="regular" />

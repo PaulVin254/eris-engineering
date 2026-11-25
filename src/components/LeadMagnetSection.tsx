@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,25 +44,25 @@ const LeadMagnetSection = () => {
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-trust-green/20 rounded-full flex items-center justify-center">
-                      <span className="text-trust-green text-sm">✓</span>
+                      <span className="text-trust-green text-sm">âœ“</span>
                     </div>
                     <span className="text-muted-foreground">7 red flags that signal a dishonest contractor</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-trust-green/20 rounded-full flex items-center justify-center">
-                      <span className="text-trust-green text-sm">✓</span>
+                      <span className="text-trust-green text-sm">âœ“</span>
                     </div>
                     <span className="text-muted-foreground">Hidden costs that inflate budgets by 40%</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-trust-green/20 rounded-full flex items-center justify-center">
-                      <span className="text-trust-green text-sm">✓</span>
+                      <span className="text-trust-green text-sm">âœ“</span>
                     </div>
                     <span className="text-muted-foreground">Questions to ask before sending any money</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <div className="w-6 h-6 bg-trust-green/20 rounded-full flex items-center justify-center">
-                      <span className="text-trust-green text-sm">✓</span>
+                      <span className="text-trust-green text-sm">âœ“</span>
                     </div>
                     <span className="text-muted-foreground">How to verify materials and avoid substandard work</span>
                   </li>
@@ -68,7 +70,7 @@ const LeadMagnetSection = () => {
                 
                 <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
                   <p className="text-sm text-primary font-semibold">
-                    🎁 BONUS: Free 30-minute consultation (normally KES 5,000) included!
+                    ðŸŽ BONUS: Free 30-minute consultation (normally KES 5,000) included!
                   </p>
                 </div>
               </div>
@@ -110,7 +112,7 @@ const LeadMagnetSection = () => {
                       <div className="text-xs text-muted-foreground">Downloads</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-trust-green">4.9★</div>
+                      <div className="text-lg font-bold text-trust-green">4.9â˜…</div>
                       <div className="text-xs text-muted-foreground">Rating</div>
                     </div>
                     <div className="text-center">

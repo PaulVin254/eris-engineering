@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight, MapPin, Phone, EnvelopeSimple } from "@phosphor-icons/react";
+import Link from "next/link";
+import { ArrowUpRight, MapPin, Phone, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
 import { SIGNATURE_RESIDENCES } from "@/data/signatureResidences";
 
 const WHATSAPP_URL =
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Practice Summary */}
           <div className="md:col-span-4 space-y-6">
-            <Link to="/" className="inline-block">
+            <Link href="/" className="inline-block">
               <img
                 src="/eris-engineering-logo-dark.svg"
                 alt="Eris Engineering"
@@ -32,27 +32,27 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 text-sm text-white/80">
               <li>
-                <Link to="/projects" className="hover:text-white transition-colors">
+                <Link href="/projects" className="hover:text-white transition-colors">
                   Residences
                 </Link>
               </li>
               <li>
-                <Link to="/concepts" className="hover:text-white transition-colors">
+                <Link href="/concepts" className="hover:text-white transition-colors">
                   Signature Series
                 </Link>
               </li>
               <li>
-                <Link to="/process" className="hover:text-white transition-colors">
+                <Link href="/process" className="hover:text-white transition-colors">
                   Approach
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-white transition-colors">
                   The Practice
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-white transition-colors">
+                <Link href="/contact" className="hover:text-white transition-colors">
                   Private Inquiry
                 </Link>
               </li>
@@ -68,7 +68,7 @@ const Footer = () => {
               {SIGNATURE_RESIDENCES.map((residence) => (
                 <li key={residence.slug}>
                   <Link
-                    to={`/projects/${residence.slug}`}
+                    href={`/projects/${residence.slug}`}
                     className="hover:text-white transition-colors"
                   >
                     {residence.title}
@@ -135,10 +135,10 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="hover:text-white transition-colors">
+            <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="hover:text-white transition-colors">
+            <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
           </div>

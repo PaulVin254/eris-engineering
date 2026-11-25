@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useScroll, useMotionValueEvent, AnimatePresence, motion } from "framer-motion";
 import { List, X, ArrowUpRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -24,13 +27,15 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const location = useLocation();
+  const pathname = usePathname();
+  const normalizedPathname =
+    pathname === "/" ? "/" : (pathname || "/").replace(/\/+$/, "");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 40);
   });
 
-  const hasDarkHero = DARK_HERO_ROUTES.includes(location.pathname);
+  const hasDarkHero = DARK_HERO_ROUTES.includes(normalizedPathname);
   const isOverDarkHero = hasDarkHero && !isScrolled && !menuOpen;
 
   return (
@@ -46,7 +51,7 @@ const Header = () => {
         <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-10 flex items-center justify-between gap-6">
           {/* Brand Logo */}
           <Link
-            to="/"
+            href="/"
             onClick={() => setMenuOpen(false)}
             aria-label="Eris Engineering Home"
             className="flex items-center shrink-0"
@@ -65,11 +70,11 @@ const Header = () => {
           {/* Single-Line Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((item) => {
-              const isActive = location.pathname === item.to;
+              const isActive = normalizedPathname === item.to;
               return (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  href={item.to}
                   className={cn(
                     "text-sm font-normal tracking-[-0.01em] whitespace-nowrap transition-colors duration-200",
                     isOverDarkHero
@@ -90,7 +95,7 @@ const Header = () => {
           {/* Primary Studio Action & Mobile Trigger */}
           <div className="flex items-center gap-3 shrink-0">
             <Link
-              to="/contact"
+              href="/contact"
               className={cn(
                 "hidden sm:inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-colors duration-200",
                 isOverDarkHero
@@ -137,7 +142,7 @@ const Header = () => {
               {NAV_LINKS.map((item) => (
                 <Link
                   key={item.to}
-                  to={item.to}
+                  href={item.to}
                   onClick={() => setMenuOpen(false)}
                   className="py-5 flex items-center justify-between text-xl font-normal tracking-tight text-[#121413] hover:text-[#1B3B2B]"
                 >
@@ -152,7 +157,7 @@ const Header = () => {
                 Nairobi and Western Kenya. Direct principal engineering oversight.
               </p>
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-6 py-3.5 text-sm font-medium"
               >
