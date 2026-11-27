@@ -109,6 +109,8 @@ const SelectedResidences = () => {
                 <img
                   src={currentStage.image}
                   alt={`${VIHIGA_RESIDENCE.title} ${currentStage.code}`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -187,6 +189,8 @@ const SelectedResidences = () => {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </div>

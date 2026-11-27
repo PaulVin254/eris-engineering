@@ -77,6 +77,8 @@ const SignatureSeriesSection = () => {
               <img
                 src={activeResidence.heroImage}
                 alt={activeResidence.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

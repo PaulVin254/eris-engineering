@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           {/* Practice Summary */}
-          <div className="md:col-span-4 space-y-6">
+          <div className="md:col-span-3 space-y-6">
             <Link href="/" className="inline-block">
               <img
                 src="/eris-engineering-logo-dark.svg"
@@ -59,8 +59,32 @@ const Footer = () => {
             </ul>
           </div>
 
+          {/* Resources */}
+          <div className="md:col-span-2 space-y-4">
+            <h3 className="text-xs font-medium uppercase tracking-widest text-white/50">
+              Resources
+            </h3>
+            <ul className="space-y-3 text-sm text-white/80">
+              <li>
+                <Link href="/blog" className="hover:text-white transition-colors">
+                  Construction Journal
+                </Link>
+              </li>
+              <li>
+                <Link href="/calculator" className="hover:text-white transition-colors">
+                  Cost Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/boq-audit" className="hover:text-white transition-colors">
+                  BOQ Audit
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Signature Residences */}
-          <div className="md:col-span-3 space-y-4">
+          <div className="md:col-span-2 space-y-4">
             <h3 className="text-xs font-medium uppercase tracking-widest text-white/50">
               Signature Series
             </h3>

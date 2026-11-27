@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SelectedResidences from "@/components/SelectedResidences";
@@ -65,6 +67,22 @@ export default function ProjectsPage() {
                 supervision, fixed-sum Bills of Quantities, and milestone-gated
                 progress releases.
               </p>
+              <div className="mt-6 flex flex-wrap items-center gap-6 text-sm">
+                <Link
+                  href="/concepts"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
+                >
+                  <span>Signature Series</span>
+                  <ArrowUpRight size={15} weight="regular" />
+                </Link>
+                <Link
+                  href="/calculator"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
+                >
+                  <span>Estimate Build Cost</span>
+                  <ArrowUpRight size={15} weight="regular" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

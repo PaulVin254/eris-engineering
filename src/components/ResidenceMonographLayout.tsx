@@ -42,6 +42,8 @@ const ResidenceMonographLayout = ({
             <img
               src={residence.heroImage}
               alt={residence.title}
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -152,6 +154,8 @@ const ResidenceMonographLayout = ({
                 <img
                   src={residence.courtyardImage}
                   alt={`${residence.title} interior and landscape interface`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -167,6 +171,8 @@ const ResidenceMonographLayout = ({
                 <img
                   src="/engineer-paul-headshot.png"
                   alt="Eng. Paul Wakoli"
+                  loading="lazy"
+                  decoding="async"
                   className="w-16 h-16 rounded-xl object-cover shrink-0 bg-white"
                 />
                 <div>
@@ -222,6 +228,8 @@ const ResidenceMonographLayout = ({
                     <img
                       src={plate.image}
                       alt={plate.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                   </div>

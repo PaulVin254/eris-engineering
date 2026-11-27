@@ -87,6 +87,8 @@ export default function ConceptsPage() {
                       <img
                         src={residence.heroImage}
                         alt={residence.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                       />
                     </Link>

@@ -19,6 +19,8 @@ const HeroMonograph = () => {
         <img
           src="/cedar-hero.jpg"
           alt="Private residence engineered by Eris Engineering in Kenya"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
         />
       </motion.div>

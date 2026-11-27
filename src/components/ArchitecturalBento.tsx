@@ -40,6 +40,8 @@ const ArchitecturalBento = () => {
             <img
               src="/teak-courtyard.jpg"
               alt="Cantilevered masonry and timber residential courtyard"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
             />
             <div
@@ -106,6 +108,8 @@ const ArchitecturalBento = () => {
             <img
               src="/quartz-kitchen-patio.jpg"
               alt="Flush sliding threshold between kitchen and courtyard terrace"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
             />
             <div

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PrivateInquirySection from "@/components/PrivateInquirySection";
@@ -225,6 +227,23 @@ export default function ProcessPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+
+              <div className="mt-10 pt-8 border-t border-[#E2E5E2] flex flex-wrap items-center gap-6 text-sm">
+                <Link
+                  href="/boq-audit"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
+                >
+                  <span>Request a BOQ Audit</span>
+                  <ArrowUpRight size={15} weight="regular" />
+                </Link>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#1B3B2B] hover:text-[#142C20] transition-colors"
+                >
+                  <span>Read the Construction Journal</span>
+                  <ArrowUpRight size={15} weight="regular" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>
