@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { BlogListContent } from "@/components/BlogListContent";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "The Eris Construction Journal",
@@ -37,6 +38,16 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-slate-50">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://eris.co.ke/" },
+            { "@type": "ListItem", position: 2, name: "Journal", item: "https://eris.co.ke/blog/" },
+          ],
+        }}
+      />
       <Header />
       <BlogListContent />
       <Footer />

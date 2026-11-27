@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PrivateInquirySection from "@/components/PrivateInquirySection";
+import { JsonLd } from "@/components/JsonLd";
 import {
   Accordion,
   AccordionContent,
@@ -102,8 +103,43 @@ const FAQS = [
 ];
 
 export default function ProcessPage() {
+  const processSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        mainEntity: FAQS.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://eris.co.ke/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Approach",
+            item: "https://eris.co.ke/process/",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <JsonLd data={processSchema} />
       <Header />
 
       <main className="pt-28 md:pt-36">

@@ -4,6 +4,7 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PrivateInquirySection from "@/components/PrivateInquirySection";
+import { JsonLd } from "@/components/JsonLd";
 import { SIGNATURE_RESIDENCES } from "@/data/signatureResidences";
 
 export const metadata: Metadata = {
@@ -40,6 +41,16 @@ export const metadata: Metadata = {
 export default function ConceptsPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://eris.co.ke/" },
+            { "@type": "ListItem", position: 2, name: "Signature Series", item: "https://eris.co.ke/concepts/" },
+          ],
+        }}
+      />
       <Header />
 
       <main className="pt-28 md:pt-36">

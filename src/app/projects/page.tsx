@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SelectedResidences from "@/components/SelectedResidences";
 import SignatureSeriesSection from "@/components/SignatureSeriesSection";
 import PrivateInquirySection from "@/components/PrivateInquirySection";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Selected Residences & Active Construction",
@@ -39,6 +40,16 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://eris.co.ke/" },
+            { "@type": "ListItem", position: 2, name: "Residences", item: "https://eris.co.ke/projects/" },
+          ],
+        }}
+      />
       <Header />
 
       <main className="pt-28 md:pt-36">

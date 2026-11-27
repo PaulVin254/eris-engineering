@@ -81,15 +81,58 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Eris Engineering",
-  url: "https://eris.co.ke",
-  sameAs: ["https://erisengineering.co.ke"],
-  subOrganization: {
-    "@type": "EducationalOrganization",
-    name: "Ephphatha Sign Language School",
-    url: "https://ephphathakenya.co.ke",
-  },
+  "@graph": [
+    {
+      "@type": ["HomeAndConstructionBusiness", "Organization"],
+      "@id": "https://eris.co.ke/#organization",
+      name: "Eris Engineering Ltd",
+      alternateName: "Eris Engineering",
+      url: "https://eris.co.ke",
+      logo: "https://eris.co.ke/eris-logo.png",
+      image: "https://eris.co.ke/cedar-hero.jpg",
+      description:
+        "Private residences and architectural engineering across Kenya, executed by registered structural engineers under fixed-sum contracts with weekly site documentation.",
+      telephone: "+254717297022",
+      email: "paul@eris.co.ke",
+      priceRange: "KES 17M - 35M+",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Westlands, Nairobi",
+        addressRegion: "Nairobi",
+        addressCountry: "KE",
+      },
+      areaServed: [
+        { "@type": "Country", name: "Kenya" },
+        { "@type": "City", name: "Nairobi" },
+        { "@type": "AdministrativeArea", name: "Kiambu County" },
+        { "@type": "AdministrativeArea", name: "Vihiga County" },
+        { "@type": "AdministrativeArea", name: "Nakuru County" },
+      ],
+      founder: {
+        "@type": "Person",
+        name: "Eng. Paul Wakoli",
+      },
+      sameAs: [
+        "https://erisengineering.co.ke",
+        "https://www.instagram.com/erisbuilders/",
+        "https://www.facebook.com/profile.php?id=61581890138497",
+      ],
+      subOrganization: {
+        "@type": "EducationalOrganization",
+        name: "Ephphatha Sign Language School",
+        url: "https://ephphathakenya.co.ke",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://eris.co.ke/#website",
+      url: "https://eris.co.ke",
+      name: "Eris Engineering",
+      publisher: {
+        "@id": "https://eris.co.ke/#organization",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

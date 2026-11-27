@@ -9,6 +9,7 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ContactInquiryForm } from "@/components/ContactInquiryForm";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Private Inquiry & Engineering Consultation",
@@ -47,6 +48,16 @@ const WHATSAPP_URL =
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://eris.co.ke/" },
+            { "@type": "ListItem", position: 2, name: "Private Inquiry", item: "https://eris.co.ke/contact/" },
+          ],
+        }}
+      />
       <Header />
 
       <main className="pt-28 md:pt-36 pb-24">

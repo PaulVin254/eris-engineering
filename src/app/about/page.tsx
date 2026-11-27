@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PrivateInquirySection from "@/components/PrivateInquirySection";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "The Practice — Structural Engineers & Leadership",
@@ -81,6 +82,16 @@ const PARTNERS = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121413] selection:bg-[#1B3B2B] selection:text-[#FAFAFA] overflow-x-hidden">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://eris.co.ke/" },
+            { "@type": "ListItem", position: 2, name: "The Practice", item: "https://eris.co.ke/about/" },
+          ],
+        }}
+      />
       <Header />
 
       <main className="pt-28 md:pt-36">
