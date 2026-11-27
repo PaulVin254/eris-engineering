@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Eris Engineering",
   },
   description:
-    "Private residences and architectural engineering across Kenya, executed by registered structural engineers under fixed-sum contracts with weekly site documentation.",
+    "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
   authors: [{ name: "Eris Engineering Ltd" }],
   keywords: [
     "Kenya custom residential builder",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title:
       "Eris Engineering | Custom Residential Engineering & Architecture in Kenya",
     description:
-      "Private residences across Kenya, executed by structural engineers under fixed-sum contracts and documented weekly.",
+      "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
     type: "website",
     url: "https://eris.co.ke",
     siteName: "Eris Engineering",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title:
       "Eris Engineering | Custom Residential Engineering & Architecture in Kenya",
     description:
-      "Private residences across Kenya, executed by structural engineers under fixed-sum contracts and documented weekly.",
+      "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
     images: ["/cedar-hero.jpg"],
   },
 };
@@ -91,7 +91,7 @@ const organizationSchema = {
       logo: "https://eris.co.ke/eris-logo.png",
       image: "https://eris.co.ke/cedar-hero.jpg",
       description:
-        "Private residences and architectural engineering across Kenya, executed by registered structural engineers under fixed-sum contracts with weekly site documentation.",
+        "Custom home design, structural drawings, and fixed-price residential construction in Kenya for diaspora and local homeowners—backed by an upfront BOQ, milestone payments, and weekly filmed site updates.",
       telephone: "+254717297022",
       email: "paul@eris.co.ke",
       priceRange: "KES 17M - 35M+",

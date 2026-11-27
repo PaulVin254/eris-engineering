@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "Eris Engineering | Custom Residential Engineering & Architecture in Kenya",
   },
   description:
-    "Private residences across Kenya, executed by structural engineers under fixed-sum contracts and documented weekly.",
+    "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
   alternates: {
     canonical: "/",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title:
       "Eris Engineering | Custom Residential Engineering & Architecture in Kenya",
     description:
-      "Private residences across Kenya, executed by structural engineers under fixed-sum contracts and documented weekly.",
+      "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
     url: "/",
     type: "website",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title:
       "Eris Engineering | Custom Residential Engineering & Architecture in Kenya",
     description:
-      "Private residences across Kenya, executed by structural engineers under fixed-sum contracts and documented weekly.",
+      "Building in Kenya from abroad? Get custom home designs, structural drawings & a real cost breakdown (BOQ) upfront—plus fixed-price building when you're ready.",
     images: ["/cedar-hero.jpg"],
   },
 };
