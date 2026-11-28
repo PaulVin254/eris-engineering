@@ -7,43 +7,43 @@ import { ArrowUpRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 /**
- * Editable portfolio data for Vihiga and completed residential commissions.
- * Swap image paths (inside /public) and prose when new site photographs are ready.
+ * Portfolio data for Vihiga and completed residential commissions.
  */
 export const VIHIGA_RESIDENCE = {
+  slug: "vihiga-residence",
   title: "The Vihiga Residence",
   location: "Vihiga County, Western Kenya",
   brief:
-    "A four-bedroom private residence in Western Kenya engineered on a sloping laterite site, currently advancing through superstructure masonry and ring-beam works under milestone-gated capital control.",
+    "A 2-bedroom parents' retirement bungalow built for a Nairobi family under a KES 2.86M Bill of Quantities—designed in 4 weeks and protected at every critical pour by 5-milestone FIDIC engineering supervision.",
   specs: [
-    { label: "Footprint", value: "420 m²" },
-    { label: "Current Stage", value: "Stage 03 Active" },
-    { label: "Cost Variance", value: "0.00%" },
+    { label: "Floor Area", value: "140 m²" },
+    { label: "Official BOQ", value: "KES 2.86M" },
+    { label: "Current Stage", value: "Roofing Stage" },
   ],
   stages: [
     {
-      code: "01 Substructure",
-      image: "/quartz-exterior.jpg",
+      code: "01 Setting-Out",
+      image: "/vihiga/milestone-1-setting-out.jpg",
       caption:
-        "Placeholder plate: geotechnical footing alignment, strip reinforcement, and anti-termite slab preparation.",
+        "Milestone 1 audit: lime-marked foundation grid, profile boards, boundary setbacks, and safe clearance around the existing 42 ft borehole.",
     },
     {
       code: "02 Ground Slab",
-      image: "/teak-courtyard.jpg",
+      image: "/vihiga/milestone-2-slab-casting.jpg",
       caption:
-        "Placeholder plate: BRC mesh verification, Class 25 concrete placement, and recorded slump testing.",
+        "Milestone 2 audit: hardcore compaction, 1000g DPM, BRC A142 mesh, and Class 25 slab casting alongside the family's local crew.",
     },
     {
       code: "03 Superstructure",
-      image: "/bronze-aerial.jpg",
+      image: "/vihiga/milestone-3-superstructure.jpg",
       caption:
-        "Placeholder plate: hand-dressed stone walling, lintel formwork, and ring-beam reinforcement in progress.",
+        "Milestone 3 audit: 200mm machine-cut stone walling, Class 25 columns and 200×300mm ring beam verified after critical rebar rectifications.",
     },
     {
-      code: "04 Elevation",
-      image: "/cedar-hero.jpg",
+      code: "04 3D Vision",
+      image: "/vihiga/render-aerial.jpg",
       caption:
-        "Placeholder plate: architectural target elevation with rainwater harvesting and integrated solar roof array.",
+        "Target compound render preserving the existing 6.55m × 4.65m outdoor kitchen beside the new pitched-roof 2-bedroom home.",
     },
   ],
 };
@@ -168,13 +168,19 @@ const SelectedResidences = () => {
                 ))}
               </div>
 
-              <div>
+              <div className="flex flex-wrap items-center gap-3">
                 <Link
-                  href="/contact"
+                  href={`/projects/${VIHIGA_RESIDENCE.slug}/`}
                   className="inline-flex items-center gap-2 rounded-lg bg-[#1B3B2B] text-[#FAFAFA] hover:bg-[#142C20] px-6 py-3.5 text-sm font-medium transition-colors"
                 >
-                  <span>Private Inquiry</span>
+                  <span>Read Full Case Study</span>
                   <ArrowUpRight size={15} weight="regular" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-lg border border-[#E2E5E2] bg-white hover:border-[#121413] text-[#121413] px-5 py-3.5 text-sm font-medium transition-colors"
+                >
+                  <span>Book Supervision</span>
                 </Link>
               </div>
             </div>

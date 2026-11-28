@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/projects/",
+    "/projects/vihiga-residence/",
     "/concepts/",
     "/about/",
     "/process/",
@@ -25,7 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${BASE_URL}${route === "" ? "/" : route}`,
     changeFrequency: route === "" || route === "/projects/" ? "weekly" : "monthly",
-    priority: route === "" ? 1.0 : route === "/projects/" || route === "/concepts/" ? 0.9 : 0.8,
+    priority:
+      route === ""
+        ? 1.0
+        : route === "/projects/" || route === "/projects/vihiga-residence/" || route === "/concepts/"
+          ? 0.9
+          : 0.8,
   }));
 
   const residenceEntries: MetadataRoute.Sitemap = SIGNATURE_RESIDENCES.map(
